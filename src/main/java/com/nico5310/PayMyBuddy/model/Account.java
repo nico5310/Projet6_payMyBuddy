@@ -1,31 +1,31 @@
 package com.nico5310.PayMyBuddy.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "account")
-public class Account {
+public class Account  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "iban")
     private String iban;
 
-    @Column(name = "balance")
-    private Double balance;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id")
     private User user;
 
+
     //GETTERS & SETTERS
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -37,13 +37,7 @@ public class Account {
         this.iban = iban;
     }
 
-    public Double getBalance() {
-        return balance;
-    }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
 
     public User getUser() {
         return user;

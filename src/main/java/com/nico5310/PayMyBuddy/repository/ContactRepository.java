@@ -10,4 +10,5 @@ import java.util.List;
 public interface ContactRepository extends JpaRepository <Contact, Integer> {
 
 
+    void deleteContactByUserIdAndUserContactId(long userId, long userContactId);
 }

@@ -1,14 +1,15 @@
 package com.nico5310.PayMyBuddy.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user_contacts")
-public class Contact {
+public class Contact implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_contacts_id")
@@ -18,13 +19,14 @@ public class Contact {
     @JoinColumn(name = "user_id")
     private User user;
 
+
     //GETTERS & SETTERS
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,11 +46,5 @@ public class Contact {
         this.user = user;
     }
 
-
-//    @Override
-//    public String toString() {
-//
-//        return "Contact [id=" + getId() + ", userContact=" + getUserContact() + ", user =" + getUser()+ "]";
-//    }
 
 }

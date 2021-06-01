@@ -1,18 +1,19 @@
 package com.nico5310.PayMyBuddy.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Integer id;
 
     @Column(name = "firstName")
     private String firstName;
@@ -29,22 +30,20 @@ public class User {
     @Column(name = "balance")
     private Double balance;
 
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name = "user")
+    @OneToOne (mappedBy = "user", cascade = CascadeType.ALL)
     private Account account;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user")
+    @OneToMany(mappedBy = "user" )
     private List<Contact> contactList = new ArrayList<>();
 
 
     // GETTERS & SETTERS
-    public long getId() {
+    public Integer getId() {
 
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
 
         this.id = id;
     }

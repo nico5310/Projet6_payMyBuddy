@@ -1,19 +1,23 @@
 package com.nico5310.PayMyBuddy.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "transaction")
-public class Transaction {
+public class Transaction implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
-    @Column(name = "date" )
+    @Column(name = "date")
     private LocalDate date;
+
+    @Column(name = "amount")
+    private Double amount;
 
     @Column (name = "description")
     private String description;
@@ -29,15 +33,15 @@ public class Transaction {
     @JoinColumn(name = "recipient_user_id")
     private User recipientUser;
 
-   // GETTERS & SETTERS
 
+    // GETTERS & SETTERS
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(Integer transactionId) {
+        this.id = transactionId;
     }
 
     public LocalDate getDate() {
@@ -46,6 +50,14 @@ public class Transaction {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     public String getDescription() {
