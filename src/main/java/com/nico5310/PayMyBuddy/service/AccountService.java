@@ -15,26 +15,30 @@ public class AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
     public List<Account> findAllAccounts() {
         return accountRepository.findAll();
     }
 
+    public Account findAccountByEmail(String email) {
+        return accountRepository.findAccountByUserEmail(email);
+    }
+
     public Optional<Account> findAccountById(Integer id) {
         return accountRepository.findById(id);
     }
 
-    public Account updateAccount(Account updateAccount) {
-        return accountRepository.save(updateAccount);
-    }
-
-    public Account saveAccount(Account account) {
-        return accountRepository.save(account);
+    public void  saveAccount(Integer id, Account account) {
+        account.setUser(userRepository.findById(id).get());
+        accountRepository.save(account);
     }
 
     public void deleteAccountById(Integer id) {
         accountRepository.deleteById(id);
     }
+
 
 }

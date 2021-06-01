@@ -12,7 +12,7 @@ public class Contact implements Serializable {
     private Integer id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_contacts_id")
+    @JoinColumn(name = "user_contact_id")
     private User userContact;
 
     @ManyToOne(cascade = CascadeType.ALL)

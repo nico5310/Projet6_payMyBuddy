@@ -64,6 +64,11 @@ public class UserService {
         return contactRepository.findAll();
     }
 
+    public List<Contact> findContactByUserEmail(String email) {
+
+        return contactRepository.findContactByUserEmail(email);
+    }
+
     public void saveContact(Integer userId, Integer contactId) {
 
         Optional<User> user = userRepository.findById(userId);

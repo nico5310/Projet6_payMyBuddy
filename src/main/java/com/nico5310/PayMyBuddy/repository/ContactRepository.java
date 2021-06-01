@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface ContactRepository extends JpaRepository <Contact, Integer> {
 
+    List<Contact> findContactByUserEmail(String email);
 
-    void deleteContactByUserIdAndUserContactId(long userId, long userContactId);
+    void deleteContactByUserIdAndUserContactId(int userId, int userContactId);
+
+
 }
