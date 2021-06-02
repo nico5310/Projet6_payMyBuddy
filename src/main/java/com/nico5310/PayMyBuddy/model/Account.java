@@ -9,7 +9,7 @@ public class Account  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idAccount;
 
     @Column(name = "iban")
     private String iban;
@@ -21,12 +21,12 @@ public class Account  implements Serializable {
 
 
     //GETTERS & SETTERS
-    public int getId() {
-        return id;
+    public int getIdAccount() {
+        return idAccount;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdAccount(int id) {
+        this.idAccount = id;
     }
 
     public String getIban() {

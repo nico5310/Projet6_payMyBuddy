@@ -11,13 +11,13 @@ public class Transaction implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idTransaction;
 
     @Column(name = "date")
     private LocalDate date;
 
     @Column(name = "amount")
-    private Double amount;
+    private Double amountTransaction;
 
     @Column (name = "description")
     private String description;
@@ -36,12 +36,12 @@ public class Transaction implements Serializable {
 
     // GETTERS & SETTERS
 
-    public Integer getId() {
-        return id;
+    public Integer getIdTransaction() {
+        return idTransaction;
     }
 
-    public void setId(Integer transactionId) {
-        this.id = transactionId;
+    public void setIdTransaction(Integer transactionId) {
+        this.idTransaction = transactionId;
     }
 
     public LocalDate getDate() {
@@ -52,12 +52,12 @@ public class Transaction implements Serializable {
         this.date = date;
     }
 
-    public Double getAmount() {
-        return amount;
+    public Double getAmountTransaction() {
+        return amountTransaction;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setAmountTransaction(Double amount) {
+        this.amountTransaction = amount;
     }
 
     public String getDescription() {

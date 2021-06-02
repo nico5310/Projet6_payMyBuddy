@@ -12,14 +12,14 @@ public class Movement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Integer idMovement;
 
     @NotBlank
     @Column(name = "type_operation")
     private String typeOperation;
 
     @Column(name = "amount")
-    private Double amount;
+    private double amountMovement;
 
     @Column(name = "date")
     private LocalDate date;
@@ -33,14 +33,14 @@ public class Movement implements Serializable {
     private Account account;
 
 
-    public Integer getId() {
+    public Integer getIdMovement() {
 
-        return id;
+        return idMovement;
     }
 
-    public void setId(Integer id) {
+    public void setIdMovement(Integer id) {
 
-        this.id = id;
+        this.idMovement = id;
     }
 
     public String getTypeOperation() {
@@ -53,14 +53,14 @@ public class Movement implements Serializable {
         this.typeOperation = typeOperation;
     }
 
-    public Double getAmount() {
+    public Double getAmountMovement() {
 
-        return amount;
+        return amountMovement;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmountMovement(Double amount) {
 
-        this.amount = amount;
+        this.amountMovement = amount;
     }
 
     public LocalDate getDate() {
@@ -73,9 +73,9 @@ public class Movement implements Serializable {
         this.date = date;
     }
 
-    public User getUser() {
+    public Integer getUser() {
 
-        return user;
+        return user.getId();
     }
 
     public void setUser(User user) {
