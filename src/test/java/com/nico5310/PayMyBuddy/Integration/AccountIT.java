@@ -1,14 +1,16 @@
-package com.nico5310.PayMyBuddy.PayMyBuddy.Integration;
+package com.nico5310.PayMyBuddy.Integration;
 
-import com.nico5310.PayMyBuddy.PayMyBuddy.Config.DataBasePreparation;
+import com.nico5310.PayMyBuddy.Config.DataBasePreparation;
 import com.nico5310.PayMyBuddy.model.Account;
-import com.nico5310.PayMyBuddy.repository.AccountRepository;
-import com.nico5310.PayMyBuddy.repository.UserRepository;
+import com.nico5310.PayMyBuddy.repository.*;
+import com.nico5310.PayMyBuddy.service.MovementService;
+import org.hibernate.Transaction;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,24 +19,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AccountIT {
 
     @Autowired
-    private DataBasePreparation dataBasePreparation;
+    private AccountRepository accountRepository;
 
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private AccountRepository accountRepository;
-
-
     @Test
-    public void saveAccountTest (){
-        //GIVEN
-        dataBasePreparation.setUp();
-        //WHEN
-        Account account = accountRepository.findAccountByUserEmail("nico@gmail.com").getUser().getAccount();
-        //THEN
-        assertThat(account.getIban()).isEqualTo("FR4412345678912345678912");
+    public void saveAccountTest() {
+
+        Account account = new Account();
+        account.setIban("FR4401234567890123456780000");
+        account.setUser(userRepository.getById(1));
+
+        assertThat(account.getIban().equals("FR4401234567890123456780000"));
+
     }
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.nico5310.PayMyBuddy.PayMyBuddy.Config;
+package com.nico5310.PayMyBuddy.Config;
 
 import com.nico5310.PayMyBuddy.model.Account;
 import com.nico5310.PayMyBuddy.model.User;
@@ -35,7 +35,7 @@ public class DataBasePreparation {
         // create account
         Account account1 = new Account();
         account1.setId(1);
-        account1.setIban("FR4412345678912345678912");
+        account1.setIban("FR4401234567890123456780000");
         account1.setUser(user1);
 
         accountRepository.save(account1);
@@ -53,7 +53,7 @@ public class DataBasePreparation {
         // create account
         Account account2 = new Account();
         account2.setId(2);
-        account2.setIban("FR44123456789123456789100");
+        account2.setIban("FR4401234567890123456780002");
         account2.setUser(user2);
         accountRepository.save(account2);
 

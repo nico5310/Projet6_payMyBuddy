@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Log4j2
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
@@ -20,13 +21,13 @@ public class UserController {
 
     // REQUEST USER
     @GetMapping(value = "/user")
-    public List<User> findAll() {
+    public List<User> findAllUsers() {
         log.info("Get all users");
         return userService.findAllUsers();
     }
 
     @GetMapping(value = "/user/{id}")
-    public User findById(@PathVariable(value = "id") Integer id) {
+    public Optional<User> findById(@PathVariable(value = "id") Integer id) {
         log.info("Get user by id" + id);
         return userService.findById(id);
     }
@@ -75,7 +76,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/user/contacts/{idUser}/{idUserContact}")
-    public void saveContact(@PathVariable(value = "idUser") Integer idUser, @PathVariable(value = "idUserContact") Integer idUserContact) {
+    public void saveContact(@PathVariable(value = "idUser") Integer idUser, @PathVariable(value = "idUserContact") User idUserContact) {
         log.info("Create a new userContact" + idUser);
         userService.saveContact(idUser, idUserContact);
     }

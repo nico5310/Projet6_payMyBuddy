@@ -11,8 +11,7 @@ public class Movement implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer idMovement;
+    private Integer id;
 
     @NotBlank
     @Column(name = "type_operation")
@@ -33,14 +32,14 @@ public class Movement implements Serializable {
     private Account account;
 
 
-    public Integer getIdMovement() {
+    public Integer getId() {
 
-        return idMovement;
+        return id;
     }
 
-    public void setIdMovement(Integer id) {
+    public void setId(Integer id) {
 
-        this.idMovement = id;
+        this.id = id;
     }
 
     public String getTypeOperation() {

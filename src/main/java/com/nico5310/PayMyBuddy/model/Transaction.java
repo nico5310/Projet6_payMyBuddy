@@ -1,5 +1,8 @@
 package com.nico5310.PayMyBuddy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,7 +14,7 @@ public class Transaction implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idTransaction;
+    private Integer id;
 
     @Column(name = "date")
     private LocalDate date;
@@ -27,6 +30,7 @@ public class Transaction implements Serializable {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sender_user_id")
+    @JsonIgnoreProperties({"id", "lastName", "email", "password", "balance", "account", "contactList"})
     private User senderUser;
 
     @OneToOne(fetch = FetchType.EAGER)
@@ -36,12 +40,12 @@ public class Transaction implements Serializable {
 
     // GETTERS & SETTERS
 
-    public Integer getIdTransaction() {
-        return idTransaction;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdTransaction(Integer transactionId) {
-        this.idTransaction = transactionId;
+    public void setId(Integer transactionId) {
+        this.id = transactionId;
     }
 
     public LocalDate getDate() {

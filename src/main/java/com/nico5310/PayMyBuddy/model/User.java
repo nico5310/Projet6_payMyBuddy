@@ -21,7 +21,7 @@ public class User implements Serializable {
     @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true )
     private String email;
 
     @Column(name = "password")
@@ -36,6 +36,22 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user" )
     private List<Contact> contactList = new ArrayList<>();
 
+       public User(int id, String firstName, String lastName, String email, String password, Double balance, Account account, List<Contact> contactList) {
+
+        this.id          = id;
+        this.firstName   = firstName;
+        this.lastName    = lastName;
+        this.email       = email;
+        this.password    = password;
+        this.balance     = balance;
+        this.account     = account;
+        this.contactList = contactList;
+    }
+
+    public User() {
+
+
+    }
 
     // GETTERS & SETTERS
     public Integer getId() {

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Log4j2
 @Service
@@ -22,6 +23,14 @@ public class UserService {
     @Autowired
     private ContactRepository contactRepository;
 
+    @Autowired
+    public UserService(UserRepository userRepository, ContactRepository contactRepository) {
+
+        this.userRepository    = userRepository;
+        this.contactRepository = contactRepository;
+
+    }
+
     // user
     public List<User> findAllUsers() {
 
@@ -29,10 +38,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findById(Integer id) {
+    public Optional<User> findById(Integer id) {
 
         log.info("Get user by id");
-        return userRepository.findById(id).orElseThrow(() -> new NoFoundException("User doesn't exist"));
+        return userRepository.findById(id);
     }
 
     public User findByEmail(String email) {
@@ -53,50 +62,59 @@ public class UserService {
 
     public void updateUser(Integer id, User userUpdated) {
 
-        User user = userRepository.findById(id).orElseThrow();
-        user.setFirstName(userUpdated.getFirstName());
-        user.setLastName(userUpdated.getLastName());
-        user.setEmail(userUpdated.getEmail());
-        user.setPassword(userUpdated.getPassword());
-        userRepository.save(user);
+        Optional<User> user = userRepository.findById(id);
+        user.get().setFirstName(userUpdated.getFirstName());
+        user.get().setLastName(userUpdated.getLastName());
+        user.get().setEmail(userUpdated.getEmail());
+        user.get().setPassword(userUpdated.getPassword());
+        userRepository.save(user.get());
     }
 
     public void deleteUserByEmail(String email) {
+
         log.info("Delete user by email");
         userRepository.deleteUserByEmail(email);
     }
 
     public void deleteById(Integer id) {
+
         log.info("Delete user by id");
         userRepository.deleteById(id);
     }
 
     // contact
     public List<Contact> findAllContacts() {
+
         log.info("Get all userContacts");
         return contactRepository.findAll();
     }
 
     public List<Contact> findContactByUserEmail(String email) {
+
         log.info("Get userContact by user email");
         return contactRepository.findContactByUserEmail(email);
     }
 
-    public void saveContact(Integer userId, Integer contactId) {
-        log.info("Create new userContact");
-        User user = userRepository.findById(userId).orElseThrow();
-        User userContact = userRepository.findById(contactId)
-                                         .orElseThrow(() -> new NoFoundException("User doesn't exist"));
+    public User saveContact(Integer userId, User contact) {
 
-        Contact contact = new Contact();
-        contact.setUser(user);
-        contact.setUserContact(userContact);
-        contactRepository.save(contact);
+        User user = userRepository.findById(userId).orElseThrow(() -> new NoFoundException("User don't exist"));
+        if (user.getId().equals(contact.getId())) {
+            throw new NoFoundException("UserContact does exist !");
+        } else {
+        log.info("Create new userContact"); }
+        userRepository.findAll().add(contact);
+        return contact;
+
     }
 
     public void deleteContact(Integer userId, Integer userContactId) {
+        User user = userRepository.findById(userId).orElseThrow(()-> new NoFoundException("User don't exist"));
+        User contact = userRepository.findById(userContactId).orElseThrow(()-> new NoFoundException("Contact don't exist"));
         log.info("Delete userContact");
-        contactRepository.deleteContactByUserIdAndUserContactId(userId, userContactId);
+        if (user.getContactList().contains(contact))
+            user.getContactList().remove(contact);
+        else throw new NoFoundException("Contact don't exist");
+
     }
 
 
