@@ -26,14 +26,14 @@ public class UserController {
         return userService.findAllUsers();
     }
 
-    @GetMapping(value = "/user/{id}")
+    @GetMapping(value = "/user/id/{id}")
     public Optional<User> findById(@PathVariable(value = "id") Integer id) {
         log.info("Get user by id" + id);
         return userService.findById(id);
     }
 
-    @GetMapping(value = "/user/{email}")
-    public User findByEmail(@PathVariable(value = "email") String email) {
+    @GetMapping(value = "/user/email/{email}")
+    public User findByEmail(@PathVariable (value = "email") String email) {
         log.info("Get user by email" + email);
         return userService.findByEmail(email);
     }

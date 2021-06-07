@@ -1,5 +1,7 @@
 package com.nico5310.PayMyBuddy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,14 +13,25 @@ public class Contact implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_contact_id")
+    @JsonIgnoreProperties({"password", "balance", "account", "contactList"})
     private User userContact;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"password", "balance", "account", "contactList"})
     private User user;
 
+    public  Contact(Integer id, User userContact, User user) {
+        this.id = id;
+        this.userContact = userContact;
+        this.user = user;
+    }
+
+    public Contact() {
+
+    }
 
     //GETTERS & SETTERS
 
@@ -44,6 +57,11 @@ public class Contact implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact {" + "id=" + getId() + "userContact=" + getUserContact() + "user=" + getUser() + "}" ;
     }
 
 

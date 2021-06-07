@@ -2,11 +2,9 @@ package com.nico5310.PayMyBuddy.service;
 
 
 import com.nico5310.PayMyBuddy.model.Account;
-
+import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.AccountRepository;
-
 import com.nico5310.PayMyBuddy.repository.UserRepository;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -22,10 +19,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceTest {
+public class AccountServiceTest {
 
     @Mock
     private AccountRepository accountRepository;
@@ -66,10 +63,10 @@ public class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Test findById to AccountService")
-    public void findByIdTest() {
+    @DisplayName("Test findAccountById to AccountService")
+    public void findAccountByIdTest() {
         //GIVEN
-        Account       account1    = new Account();
+        Account account1 = new Account();
         account1.setId(1);
         account1.setIban("FR4401234567890123456780000");
         account1.setUser(userRepository.getById(1));
@@ -80,10 +77,10 @@ public class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Test findByEmail to AccountService")
-    public void findByEmailTest() {
+    @DisplayName("Test findAccountByEmail to AccountService")
+    public void findAccountByEmailTest() {
         //GIVEN
-        Account       account1    = new Account();
+        Account account1 = new Account();
         account1.setId(1);
         account1.setIban("FR4401234567890123456780000");
         account1.setUser(userRepository.getById(1));
@@ -94,18 +91,39 @@ public class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Test saveUser to AccountService")
-    public void saveUserTest() {
+    @DisplayName("Test saveAccount to AccountService")
+    public void saveAccountTest() {
         //GIVEN
-        Account       account1    = new Account();
+        User    user     = new User();
+        user.setId(1);
+        Account account1 = new Account();
         account1.setId(1);
         account1.setIban("FR4401234567890123456780000");
-        account1.setUser(userRepository.getById(1));
+        account1.setUser(user);
         //WHEN
-        when(accountRepository.findAccountByUserEmail(any(String.class))).thenReturn(account1);
+        when(accountRepository.save(account1)).thenReturn(account1);
+        when(userRepository.findById(1)).thenReturn(java.util.Optional.of(user));
+        accountService.saveAccount(1, account1);
         //THEN
-        assertEquals(accountService.findAccountByEmail("").getIban(), "FR4401234567890123456780000");
+        verify(userRepository, times(1)).findById(1);
+        verify(accountRepository, times(1)).save(account1);
     }
 
+    @Test
+    @DisplayName("Test deleteAccountById to AccountService")
+    public void deleteAccountByIdTest() {
+        //GIVEN
+        //GIVEN
+        User    user     = new User();
+        user.setId(1);
+        Account account1 = new Account();
+        account1.setId(1);
+        account1.setIban("FR4401234567890123456780000");
+        account1.setUser(user);
+        //WHEN
+        accountService.deleteAccountById(1);
+        //THEN
+        verify(accountRepository).deleteById(1);
+    }
 
 }

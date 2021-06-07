@@ -28,13 +28,14 @@ public class Transaction implements Serializable {
     @Column (name = "fee")
     private BigDecimal fee;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "sender_user_id")
-    @JsonIgnoreProperties({"id", "lastName", "email", "password", "balance", "account", "contactList"})
     private User senderUser;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "recipient_user_id")
+    @JsonIgnoreProperties({"id", "lastName", "email", "password", "balance", "account", "contactList"})
     private User recipientUser;
 
 

@@ -21,6 +21,11 @@ public class AccountService {
     @Autowired
     private UserRepository    userRepository;
 
+    public AccountService(AccountRepository accountRepository, UserRepository userRepository) {
+        this.accountRepository = accountRepository;
+        this.userRepository = userRepository;
+    }
+
 
     public List<Account> findAllAccounts() {
 

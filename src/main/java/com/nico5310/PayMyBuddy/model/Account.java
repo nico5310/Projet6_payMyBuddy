@@ -1,5 +1,7 @@
 package com.nico5310.PayMyBuddy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -15,12 +17,22 @@ public class Account  implements Serializable {
     private String iban;
 
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"password", "balance", "account", "contactList"})
     private User user;
 
+    public Account(int id, String iban, User user) {
 
-    //GETTERS & SETTERS
+        this.id   = id;
+        this.iban = iban;
+        this.user = user;
+    }
+
+    public Account() {
+
+    }
+
     public int getId() {
         return id;
     }
