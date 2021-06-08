@@ -13,39 +13,39 @@ import java.util.Optional;
 
 @Log4j2
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
     // REQUEST USER
-    @GetMapping(value = "/user")
+    @GetMapping()
     public List<User> findAllUsers() {
         log.info("Get all users");
         return userService.findAllUsers();
     }
 
-    @GetMapping(value = "/user/id/{id}")
+    @GetMapping(value = "/id/{id}")
     public Optional<User> findById(@PathVariable(value = "id") Integer id) {
         log.info("Get user by id" + id);
         return userService.findById(id);
     }
 
-    @GetMapping(value = "/user/email/{email}")
+    @GetMapping(value = "/email/{email}")
     public User findByEmail(@PathVariable (value = "email") String email) {
         log.info("Get user by email" + email);
         return userService.findByEmail(email);
     }
 
-    @PostMapping(value = "/user")
+    @PostMapping
     public User saveUser(@Valid @RequestBody User user) {
         log.info("Create a new user" + user);
         return userService.saveUser(user);
     }
 
-    @PutMapping(value = "/user/{id}")
-    public void updateUser(@PathVariable(value = "id") Integer id, @Valid @RequestBody User user) {
+    @PutMapping(value = "/{id}")
+    public void updateUser(@PathVariable(value = "id") Integer id,  @Valid @RequestBody User user) {
         log.info("Update a user by id" + id);
         userService.updateUser(id, user);
     }
@@ -56,32 +56,32 @@ public class UserController {
         userService.deleteById(id);
     }
 
-    @DeleteMapping(value = "/user/{email}")
-    public void deleteUserByEmail(@PathVariable(value = "email") String email) {
+    @DeleteMapping(value = "/{email}")
+    public void deleteByEmail(@PathVariable (value = "email")String email) {
         log.info("Delete user by email" + email);
-        userService.deleteUserByEmail(email);
+        userService.deleteByEmail(email);
     }
 
     //REQUEST CONTACT
-    @GetMapping(value = "/user/contacts")
-    public List<Contact> findAllContacts() {
+    @GetMapping(value = "/contacts")
+    public List<Contact> findAll() {
         log.info("Get all userContacts");
-        return userService.findAllContacts();
+        return userService.findAll();
     }
 
-    @GetMapping(value = "/user/contacts/{email}")
+    @GetMapping(value = "/contacts/{email}")
     public List<Contact> findContactByUserEmail(@PathVariable(value = "email") String email) {
         log.info("Get userContact by email" + email);
         return userService.findContactByUserEmail(email);
     }
 
-    @PostMapping(value = "/user/contacts/{idUser}/{idUserContact}")
+    @PostMapping(value = "/contacts/{idUser}/{idUserContact}")
     public void saveContact(@PathVariable(value = "idUser") Integer idUser, @PathVariable(value = "idUserContact") User idUserContact) {
         log.info("Create a new userContact" + idUser);
         userService.saveContact(idUser, idUserContact);
     }
 
-    @DeleteMapping(value = "/user/contacts/{idUser}/{idUserContact}")
+    @DeleteMapping(value = "/contacts/{idUser}/{idUserContact}")
     public void deleteContact(@PathVariable(value = "idUser") Integer idUser, @PathVariable(value = "idUserContact") Integer idUserContact) {
         log.info("Delete userContact by idUser" + idUser);
         userService.deleteContact(idUser, idUserContact);

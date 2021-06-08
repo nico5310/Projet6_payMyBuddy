@@ -13,7 +13,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "firstName")
     private String firstName;
@@ -36,7 +36,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Contact> contactList = new ArrayList<>();
 
-       public User(int id, String firstName, String lastName, String email, String password, Double balance, Account account, List<Contact> contactList) {
+       public User(Integer id, String firstName, String lastName, String email, String password, Double balance, Account account, List<Contact> contactList) {
 
         this.id          = id;
         this.firstName   = firstName;

@@ -94,6 +94,7 @@ public class AccountServiceIT {
         account.setIban("FR4401234567890123456780000");
         account.setUser(userRepository.getById(1));
 
+        //noinspection ResultOfMethodCallIgnored
         assertThat(account.getIban().equals("FR4401234567890123456780000"));
 
     }

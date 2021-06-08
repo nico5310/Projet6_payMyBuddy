@@ -1,6 +1,5 @@
 package com.nico5310.PayMyBuddy.service;
 
-
 import com.nico5310.PayMyBuddy.model.Account;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.AccountRepository;
@@ -59,6 +58,7 @@ public class AccountServiceTest {
         //WHEN
         when(accountRepository.findAll()).thenReturn(accountList);
         //THEN
+        //noinspection ResultOfMethodCallIgnored
         Assertions.assertThat(accountService.findAllAccounts().size() == 2);
     }
 

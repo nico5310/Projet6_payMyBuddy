@@ -5,11 +5,8 @@ import com.nico5310.PayMyBuddy.model.Movement;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.AccountRepository;
 import com.nico5310.PayMyBuddy.repository.MovementRepository;
-import com.nico5310.PayMyBuddy.repository.TransactionRepository;
 import com.nico5310.PayMyBuddy.repository.UserRepository;
-import com.nico5310.PayMyBuddy.service.AccountService;
 import com.nico5310.PayMyBuddy.service.MovementService;
-import com.nico5310.PayMyBuddy.service.TransactionService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,8 +22,6 @@ public class MovementServiceIT {
     @Autowired
     private MovementRepository movementRepository;
 
-    @Autowired
-    private TransactionRepository transactionRepository;
 
     @Autowired
     private AccountRepository accountRepository;
@@ -35,13 +30,8 @@ public class MovementServiceIT {
     private UserRepository userRepository;
 
     @Autowired
-    private AccountService accountService;
-
-    @Autowired
     private MovementService movementService;
 
-    @Autowired
-    private TransactionService transactionService;
 
     @Test
     @DisplayName("Test findAllMovements to MovementServiceIT ")

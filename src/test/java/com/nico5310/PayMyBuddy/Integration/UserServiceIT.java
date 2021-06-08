@@ -6,10 +6,9 @@ import com.nico5310.PayMyBuddy.repository.UserRepository;
 import com.nico5310.PayMyBuddy.service.UserService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.web.servlet.MockMvc;
+
 
 import java.util.List;
 
@@ -17,12 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
-@AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UserServiceIT {
 
-    @Autowired
-    private MockMvc mockMvc;
 
     @Autowired
     private UserRepository userRepository;
@@ -128,7 +124,7 @@ public class UserServiceIT {
         userService.saveUser(user);
 
         //WHEN
-        userService.deleteUserByEmail(user.getEmail());
+        userService.deleteByEmail(user.getEmail());
         //THEN
         assertFalse(userRepository.findById(1).isPresent());
     }

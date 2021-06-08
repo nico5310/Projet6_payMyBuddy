@@ -70,10 +70,10 @@ public class UserService {
         userRepository.save(user.get());
     }
 
-    public void deleteUserByEmail(String email) {
+    public void deleteByEmail(String email) {
 
         log.info("Delete user by email");
-        userRepository.deleteUserByEmail(email);
+        userRepository.deleteByEmail(email);
     }
 
     public void deleteById(Integer id) {
@@ -83,7 +83,7 @@ public class UserService {
     }
 
     // contact
-    public List<Contact> findAllContacts() {
+    public List<Contact> findAll() {
 
         log.info("Get all userContacts");
         return contactRepository.findAll();

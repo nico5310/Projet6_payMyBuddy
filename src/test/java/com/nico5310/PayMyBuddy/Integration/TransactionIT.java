@@ -2,10 +2,8 @@ package com.nico5310.PayMyBuddy.Integration;
 
 import com.nico5310.PayMyBuddy.model.Transaction;
 import com.nico5310.PayMyBuddy.model.User;
-import com.nico5310.PayMyBuddy.repository.AccountRepository;
 import com.nico5310.PayMyBuddy.repository.TransactionRepository;
 import com.nico5310.PayMyBuddy.repository.UserRepository;
-import com.nico5310.PayMyBuddy.service.AccountService;
 import com.nico5310.PayMyBuddy.service.TransactionService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -24,13 +22,7 @@ public class TransactionIT {
     private TransactionRepository transactionRepository;
 
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private AccountService accountService;
 
     @Autowired
     private TransactionService transactionService;

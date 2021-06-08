@@ -164,9 +164,9 @@ public class UserServiceTest {
         user1.setContactList(contactList1);
 
         //WHEN
-        userService.deleteUserByEmail("nico@gmail.com");
+        userService.deleteByEmail("nico@gmail.com");
         //THEN
-        verify(userRepository).deleteUserByEmail("nico@gmail.com");
+        verify(userRepository).deleteByEmail("nico@gmail.com");
     }
 
     @Test
