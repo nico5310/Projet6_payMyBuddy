@@ -89,7 +89,7 @@ public class TransactionIT {
         userRepository.save(user2);
 
         //WHEN
-        transactionService.transfer(user1.getEmail(), user2.getEmail(), LocalDate.now(), 2000.0,  10.0, "virement");
+        transactionService.transfer(user1.getEmail(), user2.getEmail(), LocalDate.now(), 2000.0,  "virement");
 
     //THEN
         Assertions.assertEquals(7990.0, userRepository.findById(1).get().getBalance());

@@ -38,7 +38,20 @@ public class Transaction implements Serializable {
     @JsonIgnoreProperties({"id", "lastName", "email", "password", "balance", "account", "contactList"})
     private User recipientUser;
 
+    public Transaction(Integer id, LocalDate date, Double amountTransaction, String description, Double fee, User senderUser, User recipientUser) {
 
+        this.id                = id;
+        this.date              = date;
+        this.amountTransaction = amountTransaction;
+        this.description       = description;
+        this.fee               = fee;
+        this.senderUser        = senderUser;
+        this.recipientUser     = recipientUser;
+    }
+
+    public Transaction() {
+
+            }
 
     // GETTERS & SETTERS
 

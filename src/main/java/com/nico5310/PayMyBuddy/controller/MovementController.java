@@ -32,19 +32,16 @@ public class MovementController {
     }
 
     @PostMapping(value = "/movement/transferToAccountBank")
-    public Movement transferToAccountBank(@Valid @RequestBody Movement movement) {
-
+    public void transferToAccountBank(@RequestParam (name = "email") String email, @RequestParam(name= "amount") Double amountMovement ) {
         log.info("Create a transfer money from account bank to application");
-        movementService.transferAccount(movement.getUser(), movement.getAmountMovement(), movement);
-        return movementService.saveMovement(movement);
+        movementService.transferToAccountBank(email, amountMovement);
     }
 
     @PostMapping(value = "/movement/transferToApplication")
-    public Movement transferToApplication(@Valid @RequestBody Movement movement) {
+    public void transferToApplication(@RequestParam (name = "email") String email, @RequestParam(name= "amount") Double amountMovement ) {
 
         log.info("Create a transfer money from account bank to application");
-        movementService.transferApplication(movement.getUser(), movement.getAmountMovement(), movement);
-        return movementService.saveMovement(movement);
+        movementService.transfertToApplication(email, amountMovement);
     }
 
 

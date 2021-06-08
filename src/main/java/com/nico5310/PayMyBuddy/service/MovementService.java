@@ -38,17 +38,11 @@ public class MovementService {
                                  .orElseThrow(() -> new NoFoundException("Movement doesn't exist"));
     }
 
-    public Movement saveMovement(Movement movement) {
-
-        log.info("Create au movement to Account");
-        return movementRepository.save(movement);
-    }
-
     // METHOD MOVEMENT
-    public void transferToAccountBank(Integer id, Double amountMovement) {
+    public void transferToAccountBank(String email, Double amountMovement) {
 
-        log.info("Transfer an amount of : " + amountMovement + "from application to account bank" + id);
-        User user = userRepository.findById(id).orElseThrow(() -> new NoFoundException("Movement doesn't exist"));
+        log.info("Transfer an amount of : " + amountMovement + "from application to account bank" + email);
+        User user = userRepository.findByEmail(email);
         if (user.getBalance() < amountMovement) {
             throw new RuntimeException("Insufficient balance");
         } else {
@@ -57,21 +51,15 @@ public class MovementService {
         }
     }
 
-    public void transfertToApplication(Integer id, Double amountMovement) {
+    public void transfertToApplication(String email, Double amountMovement ) {
 
-        log.info("Transfer an amount of : " + amountMovement + "from account bank to Application" + id);
-        User user = userRepository.findById(id).orElseThrow(() -> new NoFoundException("Movement doesn't exist"));
+        log.info("Transfer an amount of : " + amountMovement + "from account bank to Application" + email);
+        User user = userRepository.findByEmail(email);
         user.setBalance(user.getBalance() + amountMovement);
         userRepository.save(user);
     }
 
-    public void transferAccount(Integer id, Double amountMovement, Movement movement) {
-        transferToAccountBank(id, amountMovement);
-    }
 
-    public  void transferApplication(Integer id, Double amountMovement, Movement movement) {
-        transfertToApplication(id, amountMovement);
-    }
 
 
 }
