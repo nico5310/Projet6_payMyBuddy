@@ -1,34 +1,24 @@
 package com.nico5310.PayMyBuddy.Integration;
 
 import com.nico5310.PayMyBuddy.model.User;
+import com.nico5310.PayMyBuddy.repository.ContactRepository;
 import com.nico5310.PayMyBuddy.repository.UserRepository;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import com.nico5310.PayMyBuddy.service.UserService;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
-import java.util.Optional;
 
-
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UserServiceIT {
 
     @Autowired
@@ -37,108 +27,134 @@ public class UserServiceIT {
     @Autowired
     private UserRepository userRepository;
 
-//    @BeforeAll
-//    public static void init() {
-//        user1 = new User (3, "Lewis", "Hamilton", "lh@gmail.com", "44", 100000000.0, null, null);
-//    }
+    @Autowired
+    private ContactRepository contactRepository;
+
+    @Autowired
+    private UserService userService;
+
+
+    @BeforeEach
+    void setup() {
+
+        userRepository.deleteAll();
+        contactRepository.deleteAll();
+    }
+
+
 
     @Test
-    @DisplayName("Test findAllUsers to UserService")
-    void findAllUsersTest() throws Exception {
 
-        this.mockMvc.perform(get("/api/user"))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$", hasSize(2)));
+    @DisplayName("Test findAllUsers to UserServiceIT")
+    public void findAllUsersTest(){
+        assertNotNull(userRepository.findAll());
+    }
+
+
+    @Test
+    @DisplayName("Test findById to UserServiceIT")
+    public void findByIdTest(){
+        assertNotNull(userRepository.findById(1));
+        assertNotNull(userRepository.findById(2));
     }
 
     @Test
-    @DisplayName("Test findAllUsers to UserService")
-    void findByIdTest() throws Exception {
+    @DisplayName("Test findfindByEmailById to UserServiceIT")
+    public void findByEmailTest(){
+        assertNull(userRepository.findByEmail("nico@gmail.com"));
 
-        this.mockMvc.perform(get("/api/user/id/1"))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.id", is(1)))
-                    .andExpect(jsonPath("$.firstName", is("Nicolas")))
-                    .andExpect(jsonPath("$.lastName", is("Biancucci")))
-                    .andExpect(jsonPath("$.email", is("nico@gmail.com")));
     }
 
     @Test
-    @DisplayName("Test findByEmail to UserService")
-    void findByEmailTest() throws Exception {
+    @DisplayName("Test saveUser to UserService")
+    void saveUserTest() {
 
-        this.mockMvc.perform(get("/api/user/email/nico@gmail.com"))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.id", is(1)))
-                    .andExpect(jsonPath("$.firstName", is("Nicolas")))
-                    .andExpect(jsonPath("$.lastName", is("Biancucci")))
-                    .andExpect(jsonPath("$.email", is("nico@gmail.com")));
+        User user = new User();
+        user.setFirstName("James");
+        user.setLastName("Bond");
+        user.setEmail("james@007.com");
+        user.setPassword("spectre");
+        user.setBalance(10000.0);
+        userRepository.save(user);
+
+        List<User> userList = this.userRepository.findAll();
+        assertEquals(1, userList.size());
+
+        assert(user.getFirstName().equals("James"));
+        assert(user.getLastName().equals("Bond"));
+        assert(user.getEmail().equals("james@007.com"));
+        assert(user.getPassword().equals("spectre"));
+        assert (user.getBalance().equals(10000.0));
     }
-
-//    @Test
-//    @DisplayName("Test saveUser to UserService")
-//    void saveUserTest() throws Exception {
-//
-//        mockMvc.perform(post("/api/user")
-//                .contentType(asJsonString(new User(3, "Lewis", "Hamilton", "lh@gmail.com", "44", 100000000.0, null, null)
-//                .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));
-//        this.mockMvc.perform(get("/api/user"))
-//                    .andDo(print())
-//                    .andExpect(status().isOk())
-//                    .andExpect(jsonPath("$", hasSize(3)));
-//    }
-//
-//    @Test
-//    public void saveUserTest2() {
-//        Mockito.when(userRepository.save(user1)).thenReturn(user1);
-//
-//    }
-
-//    @Test
-//    @DisplayName("Test saveUser to UserService")
-//    void saveUser() {
-//
-//        User user = new User();
-//        user.setFirstName("Nicolas");
-//        user.setLastName("Biancucci");
-//        user.setEmail("nico@gmail.com");
-//        user.setPassword("azerty");
-//        user.setBalance(10000.0);
-//        user.setContactList(new User(2, "James", "Bond", "james@007.com", "spectre", 10000.0, null, null));
-//        userRepository.save(user);
-//
-//        User user2 = new User();
-//        user.setFirstName("James");
-//        user.setLastName("Bond");
-//        user.setEmail("james@007.com");
-//        user.setPassword("spectre");
-//        user.setBalance(10000.0);
-//        userRepository.save(user2);
-//
-//
-//        List<User> userList = this.userRepository.findAll();
-//        assertEquals(2, userList.size());
-//
-//        assert(user.getFirstName().equals("Nicolas"));
-//        assert(user.getLastName().equals("Biancucci"));
-//        assert(user.getEmail().equals("nico@gmail.com"));
-//        assert(user.getPassword().equals("azerty"));
-//        assert (user.getBalance().equals(10000.0));
-//    }
 
     @Test
     @DisplayName("Test updateUser to UserService")
-    void updateUser() {
+    void updateUserTest() {
+        //GIVEN
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("James");
+        user.setLastName("Bond");
+        user.setEmail("james@007.com");
+        user.setPassword("spectre");
+        user.setBalance(10000.0);
+        userService.saveUser(user);
 
-        Optional<User> user = userRepository.findById(2);
-        user.get().setPassword("casino");
-        userRepository.save(user.get());
+        List<User> userList = userRepository.findAll();
+        Assertions.assertTrue(userList.toString().contains("James"));
 
-        Optional<User> userList = this.userRepository.findById(2);
-        assertEquals("casino", userList.get().getPassword());
+        User userUpdate = new User();
+        userUpdate.setFirstName("Lewis");
+        userUpdate.setLastName("Hamilton");
+        userUpdate.setEmail("44@44.com");
+        userUpdate.setPassword("mercedes");
+        userUpdate.setBalance(10000.0);
+        //WHEN
+        userService.updateUser(user.getId(), userUpdate);
+        //THEN
+        Assertions.assertTrue(userRepository.findById(1).get().getLastName().contains("Hamilton"));
+    }
+
+    @Test
+    @DisplayName("Test deleteUserByEmail to UserService")
+    void deleteUserByEmailTest() {
+        //GIVEN
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("James");
+        user.setLastName("Bond");
+        user.setEmail("james@007.com");
+        user.setPassword("spectre");
+        user.setBalance(10000.0);
+        user.setAccount(null);
+        user.setContactList(null);
+        userService.saveUser(user);
+
+        //WHEN
+        userService.deleteUserByEmail(user.getEmail());
+        //THEN
+        assertFalse(userRepository.findById(1).isPresent());
+    }
+
+    @Test
+    @DisplayName("Test deleteUserByEmail to UserService")
+    void deleteByIdTest() {
+        //GIVEN
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("James");
+        user.setLastName("Bond");
+        user.setEmail("james@007.com");
+        user.setPassword("spectre");
+        user.setBalance(10000.0);
+        user.setAccount(null);
+        user.setContactList(null);
+        userService.saveUser(user);
+
+        //WHEN
+        userService.deleteById(user.getId());
+        //THEN
+        assertFalse(userRepository.findById(1).isPresent());
     }
 
 

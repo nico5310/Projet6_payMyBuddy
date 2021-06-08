@@ -33,7 +33,7 @@ public class User implements Serializable {
     @OneToOne (mappedBy = "user", cascade = CascadeType.ALL)
     private Account account;
 
-    @OneToMany(mappedBy = "user" )
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Contact> contactList = new ArrayList<>();
 
        public User(int id, String firstName, String lastName, String email, String password, Double balance, Account account, List<Contact> contactList) {

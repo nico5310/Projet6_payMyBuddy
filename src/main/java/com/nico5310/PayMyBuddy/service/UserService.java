@@ -95,7 +95,7 @@ public class UserService {
         return contactRepository.findContactByUserEmail(email);
     }
 
-    public User saveContact(Integer userId, User contact) {
+    public void saveContact(Integer userId, User contact) {
 
         User user = userRepository.findById(userId).orElseThrow(() -> new NoFoundException("User don't exist"));
         if (user.getId().equals(contact.getId())) {
@@ -103,7 +103,6 @@ public class UserService {
         } else {
         log.info("Create new userContact"); }
         userRepository.findAll().add(contact);
-        return contact;
 
     }
 

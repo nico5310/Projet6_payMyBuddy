@@ -48,7 +48,7 @@ public class MovementService {
     public void transferToAccountBank(Integer id, Double amountMovement) {
 
         log.info("Transfer an amount of : " + amountMovement + "from application to account bank" + id);
-        User user = userRepository.findById(id).orElseThrow();
+        User user = userRepository.findById(id).orElseThrow(() -> new NoFoundException("Movement doesn't exist"));
         if (user.getBalance() < amountMovement) {
             throw new RuntimeException("Insufficient balance");
         } else {
@@ -60,7 +60,7 @@ public class MovementService {
     public void transfertToApplication(Integer id, Double amountMovement) {
 
         log.info("Transfer an amount of : " + amountMovement + "from account bank to Application" + id);
-        User user = userRepository.findById(id).orElseThrow();
+        User user = userRepository.findById(id).orElseThrow(() -> new NoFoundException("Movement doesn't exist"));
         user.setBalance(user.getBalance() + amountMovement);
         userRepository.save(user);
     }

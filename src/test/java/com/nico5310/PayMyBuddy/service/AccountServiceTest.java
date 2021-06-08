@@ -112,7 +112,7 @@ public class AccountServiceTest {
     @Test
     @DisplayName("Test deleteAccountById to AccountService")
     public void deleteAccountByIdTest() {
-        //GIVEN
+
         //GIVEN
         User    user     = new User();
         user.setId(1);
