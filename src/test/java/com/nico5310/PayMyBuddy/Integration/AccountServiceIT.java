@@ -1,18 +1,22 @@
 package com.nico5310.PayMyBuddy.Integration;
 
 import com.nico5310.PayMyBuddy.model.Account;
+import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.AccountRepository;
 import com.nico5310.PayMyBuddy.repository.UserRepository;
 import com.nico5310.PayMyBuddy.service.AccountService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.w3c.dom.html.HTMLImageElement;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 @SpringBootTest
@@ -35,19 +39,56 @@ public class AccountServiceIT {
 
     }
 
-//    @Test
-//    @DisplayName("Test findAccountByEmail to AccountService")
-//    public void findAccountByEmailTest() {
-//
-//        Account       account1    = new Account();
-//        account1.setId(1);
-//        account1.setIban("10101010");
-//        account1.setUser(userRepository.getById(1));
-//
-//        when
-//
-//        assertThat(accountService.findAllAccounts().size() == 2);
-//    }
+    @Test
+    @DisplayName("Test findAllAccounts to AccountService")
+    public void findAllAccountsTest() {
+        //GIVEN
+        Account account = new Account();
+        account.setId(1);
+        account.setIban("FR4401234567890123456780000");
+
+        accountRepository.save(account);
+        //WHEN
+
+        //THEN
+        Assertions.assertTrue(accountService.findAllAccounts().get(0).getIban().contains("FR4401234567890123456780000"));
+
+    }
+
+    @Test
+    @DisplayName("Test findAccountByEmail to AccountService")
+    public void findAccountByEmailTest() {
+        //GIVEN
+        User user = new User();
+        user.setEmail("nico@gmail.com");
+        userRepository.save(user);
+        Account account = new Account();
+        account.setId(1);
+        account.setIban("FR4401234567890123456780000");
+        account.setUser(user);
+        accountRepository.save(account);
+        //WHEN
+
+        //THEN
+        Assertions.assertTrue(accountService.findAccountByEmail(user.getEmail()).getIban().contains("FR4401234567890123456780000"));
+
+    }
+
+    @Test
+    @DisplayName("Test findAccountById to AccountService")
+    public void findAccountByIdTest() {
+        //GIVEN
+        Account account = new Account();
+        account.setId(1);
+        account.setIban("FR4401234567890123456780000");
+        accountRepository.save(account);
+        //WHEN
+
+        //THEN
+        Assertions.assertTrue(accountService.findAccountById(1).getIban().contains("FR4401234567890123456780000"));
+
+    }
+
 
     @Test
     @DisplayName("Test saveAccountTest to AccountService")
@@ -58,6 +99,28 @@ public class AccountServiceIT {
         account.setUser(userRepository.getById(1));
 
         assertThat(account.getIban().equals("FR4401234567890123456780000"));
+
+    }
+
+    @Test
+    @DisplayName("Test deleteAccountById to AccountService")
+    public void deleteAccountByIdTest() {
+
+        //GIVEN
+        User user = new User();
+        user.setEmail("nico@gmail.com");
+        userRepository.save(user);
+        Account account = new Account();
+        account.setId(1);
+        account.setIban("FR4401234567890123456780000");
+        account.setUser(user);
+        accountService.saveAccount(user.getId(),account);
+        //WHEN
+        Assertions.assertTrue(accountService.findAccountByEmail(user.getEmail()).getIban().contains("FR4401234567890123456780000"));
+        accountService.deleteAccountById(account.getId());
+        //THEN
+        Assertions.assertFalse(accountRepository.existsById(1));
+
 
     }
 
