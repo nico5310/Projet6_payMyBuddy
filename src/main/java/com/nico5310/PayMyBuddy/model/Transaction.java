@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -26,7 +25,8 @@ public class Transaction implements Serializable {
     private String description;
 
     @Column (name = "fee")
-    private BigDecimal fee;
+    private Double fee ;
+
 
     @OneToOne
     @JsonIgnore
@@ -37,6 +37,7 @@ public class Transaction implements Serializable {
     @JoinColumn(name = "recipient_user_id")
     @JsonIgnoreProperties({"id", "lastName", "email", "password", "balance", "account", "contactList"})
     private User recipientUser;
+
 
 
     // GETTERS & SETTERS
@@ -73,11 +74,11 @@ public class Transaction implements Serializable {
         this.description = description;
     }
 
-    public BigDecimal getFee() {
-        return fee;
+    public Double getFee() {
+        return getAmountTransaction()*0.005;
     }
 
-    public void setFee(BigDecimal fee) {
+    public void setFee(Double fee) {
         this.fee = fee;
     }
 

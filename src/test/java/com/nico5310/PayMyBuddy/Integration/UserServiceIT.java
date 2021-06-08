@@ -41,10 +41,7 @@ public class UserServiceIT {
         contactRepository.deleteAll();
     }
 
-
-
     @Test
-
     @DisplayName("Test findAllUsers to UserServiceIT")
     public void findAllUsersTest(){
         assertNotNull(userRepository.findAll());

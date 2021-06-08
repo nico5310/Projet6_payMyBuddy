@@ -47,7 +47,7 @@ public class TransactionService {
 
     // METHOD TRANSFER
 
-    public void transfer(String emailSender, String emailRecipient, LocalDate date, Double amountTransaction, String description) {
+    public void transfer(String emailSender, String emailRecipient, LocalDate date, Double amountTransaction, Double fee, String description) {
         log.info("Make a bank transfer of :" + amountTransaction);
         User userSender = userRepository.findByEmail(emailSender);
         User userRecipient = userRepository.findByEmail(emailRecipient);
@@ -55,11 +55,11 @@ public class TransactionService {
         if (userRecipient == null) {
             throw new RuntimeException("Impossible to make a transfer, user is not one of the contacts");
         }
-        else if (userSender.getBalance() - ((amountTransaction)+(amountTransaction*0.005)) < 0) {
+        else if (userSender.getBalance() - ((amountTransaction)+(fee)) < 0) {
             throw new RuntimeException("balance lower for transaction");
         }
         else {
-            userSender.setBalance(userSender.getBalance() - ((amountTransaction) - (amountTransaction*0.005)));
+            userSender.setBalance(userSender.getBalance() - ((amountTransaction) + (fee)));
             userRepository.save(userSender);
 
             userRecipient.setBalance(userRecipient.getBalance() + amountTransaction);
@@ -68,7 +68,7 @@ public class TransactionService {
             Transaction transaction = new Transaction();
             transaction.setSenderUser(userSender);
             transaction.setRecipientUser(userRecipient);
-            transaction.setDate(LocalDate.now(ZoneId.from(date)));
+            transaction.setDate(LocalDate.now());
             transaction.setAmountTransaction(amountTransaction);
             transaction.setDescription(description);
             transactionRepository.save(transaction);
