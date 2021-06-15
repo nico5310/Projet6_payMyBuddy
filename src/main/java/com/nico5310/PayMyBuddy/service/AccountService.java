@@ -45,7 +45,7 @@ public class AccountService {
         return accountRepository.findById(idAccount).orElseThrow(() -> new NoFoundException("Account doesn't exist"));
     }
 
-    public void saveAccount(Integer idAccount, Account account) {
+    public Account saveAccount(Integer idAccount, Account account) {
 
         if(accountRepository.findAccountByUserEmail(account.getIban())!=null) {
             throw new NoFoundException("Account does exist!");
@@ -53,6 +53,7 @@ public class AccountService {
         log.info("Create a new account with ");
         account.setUser(userRepository.findById(idAccount).get());
         accountRepository.save(account);
+        return account;
     }
 
     public void deleteAccountById(Integer idAccount) {

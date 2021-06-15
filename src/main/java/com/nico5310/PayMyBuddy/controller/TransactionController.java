@@ -1,39 +1,61 @@
 package com.nico5310.PayMyBuddy.controller;
 
 import com.nico5310.PayMyBuddy.model.Transaction;
+import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.service.TransactionService;
-import lombok.extern.log4j.Log4j2;
+import com.nico5310.PayMyBuddy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
-import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 
-@Log4j2
 @RestController
-@Transactional
+@RequestMapping(value= "/transactions")
 public class TransactionController {
 
     @Autowired
     private TransactionService transactionService;
 
-    @GetMapping(value = "/transactions")
+    @Autowired
+    private UserService userService;
+
+    /**
+     * List of Transaction object
+     */
+    private List<Transaction> transactions;
+
+
+    @GetMapping(value = "")
     public List<Transaction> findAll() {
-        log.info("Get all transactions");
         return transactionService.findAllTransactions();
     }
 
-    @GetMapping(value = "/transactions/{idTransaction}")
-    public Transaction findTransactionById (@PathVariable (value = "idTransaction") Integer idTransaction) {
-        log.info("Get transaction by idTransaction");
-        return transactionService.findTransactionById(idTransaction);
+    /**
+     * Open homepage view
+     *
+     * @param user
+     *         the user
+     * @param model
+     *         the model
+     *
+     * @return the homepage form view
+     */
+    @GetMapping(value = "/transfer")
+    public String transferPage(@AuthenticationPrincipal User user, Model model) {
+
+        transactions = transactionService.findTransactionsOfUserPrincipal(user);
+        model.addAttribute("transfer", transactions);
+        return "transfer";
     }
 
-    @PostMapping(value = "/transactions")
-    public Transaction createTransaction (@Valid @RequestBody Transaction transaction) {
-        log.info("Create a new Transaction");
-        return transactionService.createTransaction(transaction);
+    @PostMapping(value = "/transfer")
+    public void transfer(@RequestParam(name = "emailSender") String emailSender, @RequestParam(name = "emailReceiver") String emailRecipient, @RequestParam(name = "date")
+    LocalDate date, @RequestParam(name = "amount") Double amountTransaction, @RequestParam(name = "description") String description) {
+
+        transactionService.transfer(emailSender, emailRecipient, date, amountTransaction, description);
     }
 
 

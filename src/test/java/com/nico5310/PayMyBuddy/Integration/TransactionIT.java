@@ -43,23 +43,23 @@ public class TransactionIT {
 
     }
 
+//    @Test
+//    @DisplayName("Test findTransactionById to TransactionServiceIT ")
+//    public void findTransactionByIdTest() {
+//        //GIVEN
+//        Transaction transaction = new Transaction();
+//        transaction.setId(1);
+//        transaction.setAmountTransaction(500.0);
+//        transactionRepository.save(transaction);
+//        //WHEN
+//
+//        //THEN
+//        Assertions.assertEquals(500.0, transactionService.findTransactionById(1).getAmountTransaction());
+//
+//    }
+
     @Test
-    @DisplayName("Test findTransactionById to TransactionServiceIT ")
-    public void findTransactionByIdTest() {
-        //GIVEN
-        Transaction transaction = new Transaction();
-        transaction.setId(1);
-        transaction.setAmountTransaction(500.0);
-        transactionRepository.save(transaction);
-        //WHEN
-
-        //THEN
-        Assertions.assertEquals(500.0, transactionService.findTransactionById(1).getAmountTransaction());
-
-    }
-
-    @Test
-    @DisplayName("Test transfer to TransactionServiceIT ")
+    @DisplayName("Test TransferController to TransactionServiceIT ")
     public void transferTest() {
         //GIVEN
         User user1 = new User();

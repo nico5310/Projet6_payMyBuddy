@@ -169,27 +169,27 @@ public class UserServiceTest {
         verify(userRepository).deleteByEmail("nico@gmail.com");
     }
 
-    @Test
-    @DisplayName("Test deleteById to UserService")
-    public void deleteByIdTest() {
-        //GIVEN
-        User          user1        = new User();
-        List<Contact> contactList1 = new ArrayList<>();
-        Account       account1     = new Account(1, "FR4401234567890123456780000", user1);
-        user1.setId(1);
-        user1.setFirstName("Nicolas");
-        user1.setLastName("Biancucci");
-        user1.setEmail("nico@gmail.com");
-        user1.setPassword("azerty");
-        user1.setBalance(10000.0);
-        user1.setAccount(account1);
-        user1.setContactList(contactList1);
-
-        //WHEN
-        userService.deleteById(1);
-        //THEN
-        verify(userRepository).deleteById(1);
-    }
+//    @Test
+//    @DisplayName("Test deleteById to UserService")
+//    public void deleteByIdTest() {
+//        //GIVEN
+//        User          user1        = new User();
+//        List<Contact> contactList1 = new ArrayList<>();
+//        Account       account1     = new Account(1, "FR4401234567890123456780000", user1);
+//        user1.setId(1);
+//        user1.setFirstName("Nicolas");
+//        user1.setLastName("Biancucci");
+//        user1.setEmail("nico@gmail.com");
+//        user1.setPassword("azerty");
+//        user1.setBalance(10000.0);
+//        user1.setAccount(account1);
+//        user1.setContactList(contactList1);
+//
+//        //WHEN
+//        userService.deleteById(1);
+//        //THEN
+//        verify(userRepository).deleteById(1);
+//    }
 
 
 }

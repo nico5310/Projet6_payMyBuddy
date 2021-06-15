@@ -51,13 +51,13 @@ public class MovementServiceTest {
     }
 
     @Test
-    @DisplayName("Test findAllMovements to Transaction service")
+    @DisplayName("Test findAll to Transaction service")
     public void findAllMovementsTest() {
         //GIVEN
         List<Movement> movementList = new ArrayList<>();
         //WHEN
         when(movementRepository.findAll()).thenReturn(movementList);
-        List<Movement> movementList1 = movementService.findAllMovements();
+        List<Movement> movementList1 = movementService.findAll();
         //THEN
         assertSame(movementList, movementList1);
         assertTrue(movementList1.isEmpty());
@@ -85,7 +85,7 @@ public class MovementServiceTest {
         //THEN
         assertSame(movement, this.movementService.findMovementById(1));
         verify(movementRepository).findById(any(Integer.class));
-        assertTrue(movementService.findAllMovements().isEmpty());
+        assertTrue(movementService.findAll().isEmpty());
     }
 
 }

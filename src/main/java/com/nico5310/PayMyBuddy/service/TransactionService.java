@@ -1,6 +1,5 @@
 package com.nico5310.PayMyBuddy.service;
 
-import com.nico5310.PayMyBuddy.exception.NoFoundException;
 import com.nico5310.PayMyBuddy.model.Transaction;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.TransactionRepository;
@@ -8,11 +7,12 @@ import com.nico5310.PayMyBuddy.repository.UserRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 @Log4j2
 @Service
@@ -32,28 +32,33 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
-    public Transaction findTransactionById(Integer idTransaction) {
 
-        log.info("Get transaction by id");
-        return transactionRepository.findById(idTransaction).orElseThrow(() -> new NoFoundException("Transaction doesn't exist"));
-    }
 
-    public Transaction createTransaction(Transaction transaction) {
+    public Transaction saveTransaction(Transaction transaction) {
 
         log.info("Create a new transaction");
+        transaction.setDate(LocalDate.now());
         return transactionRepository.save(transaction);
+    }
+
+    public List<Transaction> findTransactionsOfUserPrincipal(User user) {
+        List<Transaction> senderUserList = transactionRepository.findTransactionsBySenderUserEmail(user.getEmail());
+        List<Transaction> receiverUserList = transactionRepository.findTransactionsByRecipientUserEmail(user.getEmail());
+        List<Transaction> fullUserList = Stream.of(senderUserList, receiverUserList).flatMap((x->x.stream())).collect(Collectors
+                .toList());
+        return fullUserList;
     }
 
 
     // METHOD TRANSFER
 
     public void transfer(String emailSender, String emailRecipient, LocalDate date, Double amountTransaction, String description) {
-        log.info("Make a bank transfer of :" + amountTransaction);
+        log.info("Make a bank TransferController of :" + amountTransaction);
         User userSender = userRepository.findByEmail(emailSender);
         User userRecipient = userRepository.findByEmail(emailRecipient);
 
         if (userRecipient == null) {
-            throw new RuntimeException("Impossible to make a transfer, user is not one of the contacts");
+            throw new RuntimeException("Impossible to make a TransferController, user is not one of the contacts");
         }
         else if (userSender.getBalance() - ((amountTransaction)+(amountTransaction*0.005)) < 0) {
             throw new RuntimeException("balance lower for transaction");

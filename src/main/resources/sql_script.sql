@@ -1,17 +1,19 @@
+drop database if exists paymybuddy;
+
+create database paymybuddy;
 use
     paymybuddy;
-
 CREATE TABLE user
 (
     id        INT AUTO_INCREMENT NOT NULL,
-    firstname VARCHAR(40)        NOT NULL,
-    lastname  VARCHAR(40)        NOT NULL,
+    first_name VARCHAR(40)        NOT NULL,
+    last_name  VARCHAR(40)        NOT NULL,
     email     VARCHAR(50)        NOT NULL,
-    password  VARCHAR(50)        NOT NULL,
+    password  VARCHAR(200)        NOT NULL,
     balance   DECIMAL(10, 2)     NOT NULL,
     PRIMARY KEY (id)
 )
-ENGINE = InnoDB;
+    ENGINE = InnoDB;
 
 CREATE TABLE account
 (
@@ -20,7 +22,7 @@ CREATE TABLE account
     user_id INT                NOT NULL,
     PRIMARY KEY (id)
 )
-ENGINE = InnoDB;
+    ENGINE = InnoDB;
 
 CREATE TABLE user_contacts
 (
@@ -29,7 +31,7 @@ CREATE TABLE user_contacts
     user_id         INT                NOT NULL,
     PRIMARY KEY (id)
 )
-ENGINE = InnoDB;
+    ENGINE = InnoDB;
 
 CREATE TABLE movement
 (
@@ -41,7 +43,7 @@ CREATE TABLE movement
     account_id     INT                NOT NULL,
     PRIMARY KEY (id)
 )
-ENGINE = InnoDB;
+    ENGINE = InnoDB;
 
 CREATE TABLE transaction
 (
@@ -54,6 +56,53 @@ CREATE TABLE transaction
     recipient_user_id INT,
     PRIMARY KEY (id)
 )
-ENGINE = InnoDB;
+    ENGINE = InnoDB;
 
+ALTER TABLE user_contacts
+    ADD CONSTRAINT user_user_contacts_fk
+        FOREIGN KEY (user_id)
+            references user (id)
+            on DELETE no action
+            on UPDATE no action ;
 
+ALTER TABLE user_contacts
+    ADD CONSTRAINT user_user_contacts_fk1
+        FOREIGN KEY (user_contact_id)
+            references user (id)
+            on DELETE no action
+            on UPDATE no action ;
+
+ALTER TABLE account
+    ADD CONSTRAINT user_account_fk
+        FOREIGN KEY (user_id)
+            references user (id)
+            on DELETE no action
+            on UPDATE no action ;
+
+ALTER TABLE transaction
+    ADD CONSTRAINT user_transaction_fk
+        FOREIGN KEY (sender_user_id)
+            references user (id)
+            on DELETE no action
+            on UPDATE no action ;
+
+ALTER TABLE transaction
+    ADD CONSTRAINT user_transaction_fk2
+        FOREIGN KEY (recipient_user_id)
+            references user (id)
+            on DELETE no action
+            on UPDATE no action ;
+
+ALTER TABLE movement
+    ADD CONSTRAINT user_movement_fk
+        FOREIGN KEY (account_id)
+            references user (id)
+            on DELETE no action
+            on UPDATE no action ;
+
+ALTER TABLE movement
+    ADD CONSTRAINT user_transaction_fk1
+        FOREIGN KEY (user_id)
+            references user (id)
+            on DELETE no action
+            on UPDATE no action ;

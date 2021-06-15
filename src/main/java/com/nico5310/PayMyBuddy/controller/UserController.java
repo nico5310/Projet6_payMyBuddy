@@ -3,17 +3,17 @@ package com.nico5310.PayMyBuddy.controller;
 import com.nico5310.PayMyBuddy.model.Contact;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.service.UserService;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-@Log4j2
+
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -22,70 +22,66 @@ public class UserController {
     // REQUEST USER
     @GetMapping()
     public List<User> findAllUsers() {
-        log.info("Get all users");
+
         return userService.findAllUsers();
     }
 
-    @GetMapping(value = "/id/{id}")
-    public Optional<User> findById(@PathVariable(value = "id") Integer id) {
-        log.info("Get user by id" + id);
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<User> findById(@PathVariable Integer id) {
+
         return userService.findById(id);
     }
 
-    @GetMapping(value = "/email/{email}")
-    public User findByEmail(@PathVariable (value = "email") String email) {
-        log.info("Get user by email" + email);
-        return userService.findByEmail(email);
-    }
 
-    @PostMapping
-    public User saveUser(@Valid @RequestBody User user) {
-        log.info("Create a new user" + user);
-        return userService.saveUser(user);
-    }
 
     @PutMapping(value = "/{id}")
-    public void updateUser(@PathVariable(value = "id") Integer id,  @Valid @RequestBody User user) {
-        log.info("Update a user by id" + id);
+    public void updateUser(@PathVariable Integer id, @RequestBody User user) {
+
         userService.updateUser(id, user);
     }
 
-    @DeleteMapping(value = "/user/{id}")
-    public void deleteById(@PathVariable(value = "id") Integer id) {
-        log.info("Delete user by id" + id);
-        userService.deleteById(id);
-    }
-
-    @DeleteMapping(value = "/{email}")
-    public void deleteByEmail(@PathVariable (value = "email")String email) {
-        log.info("Delete user by email" + email);
-        userService.deleteByEmail(email);
-    }
 
     //REQUEST CONTACT
-    @GetMapping(value = "/contacts")
-    public List<Contact> findAll() {
-        log.info("Get all userContacts");
-        return userService.findAll();
+    @GetMapping(value = "/contacts", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Contact> findAllContacts() {
+
+        return userService.findAllContacts();
+    }
+
+    @PostMapping("/contacts")
+    public void saveContact(@RequestParam(name = "idUser") Integer idUser, @RequestParam(name = "idUserContact") Integer idUserContact) {
+
+        userService.saveContact(idUser, idUserContact);
+
+    }
+
+    @DeleteMapping(value = "/contacts")
+    public void deleteContact(@RequestParam(name = "idUser") Integer idUser, @RequestParam(name = "idUserContact") Integer idUserContact) {
+
+        userService.deleteContact(idUser, idUserContact);
     }
 
     @GetMapping(value = "/contacts/{email}")
-    public List<Contact> findContactByUserEmail(@PathVariable(value = "email") String email) {
-        log.info("Get userContact by email" + email);
+    public List<Contact> findContactByUserEmail(@PathVariable String email) {
+
         return userService.findContactByUserEmail(email);
     }
 
-    @PostMapping(value = "/contacts/{idUser}/{idUserContact}")
-    public void saveContact(@PathVariable(value = "idUser") Integer idUser, @PathVariable(value = "idUserContact") User idUserContact) {
-        log.info("Create a new userContact" + idUser);
-        userService.saveContact(idUser, idUserContact);
-    }
 
-    @DeleteMapping(value = "/contacts/{idUser}/{idUserContact}")
-    public void deleteContact(@PathVariable(value = "idUser") Integer idUser, @PathVariable(value = "idUserContact") Integer idUserContact) {
-        log.info("Delete userContact by idUser" + idUser);
-        userService.deleteContact(idUser, idUserContact);
-    }
+
+//    @DeleteMapping(value = "/user/{id}")
+//    public void deleteById(@PathVariable Integer id) {
+//
+//        log.info("Delete user by id" + id);
+//        userService.deleteById(id);
+//    }
+//
+//    @DeleteMapping(value = "/{email}")
+//    public void deleteByEmail(@PathVariable String email) {
+//
+//        log.info("Delete user by email" + email);
+//        userService.deleteByEmail(email);
+//    }
 
 
 }

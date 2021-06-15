@@ -2,48 +2,52 @@ package com.nico5310.PayMyBuddy.controller;
 
 import com.nico5310.PayMyBuddy.model.Movement;
 import com.nico5310.PayMyBuddy.service.MovementService;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
-@Log4j2
+/**
+ * MovementController
+ * @author Nicolas
+ */
 @RestController
+@RequestMapping(value= "/movement")
 public class MovementController {
 
+    /**
+     * @see MovementService
+     */
     @Autowired
     private MovementService movementService;
 
-    @GetMapping(value = "/movement")
-    public List<Movement> findAllMovements() {
-
-        log.info("Get all movements");
-        return  movementService.findAllMovements();
-
+    /**
+     * Get List of Movements
+     * @return list of movements
+     */
+    @GetMapping
+    public List<Movement> findAll() {
+            return  movementService.findAll();
     }
 
-    @GetMapping(value = "/movement/{idMovement}")
-    public Movement findMovementById(@PathVariable (value = "idMovement") Integer idMovement) {
-
-        log.info("Get movement by id");
-        return  movementService.findMovementById(idMovement);
-    }
-
-    @PostMapping(value = "/movement/transferToAccountBank")
+    /**
+     * Get TransferController to account bank
+     * @param email the email
+     * @param amountMovement the amount of movement
+     */
+    @PostMapping(value = "/transferToAccountBank")
     public void transferToAccountBank(@RequestParam (name = "email") String email, @RequestParam(name= "amount") Double amountMovement ) {
-        log.info("Create a transfer money from account bank to application");
-        movementService.transferToAccountBank(email, amountMovement);
+            movementService.transferToAccountBank(email, amountMovement);
     }
 
-    @PostMapping(value = "/movement/transferToApplication")
+    /**
+     * Get TransferController to application
+     * @param email the email
+     * @param amountMovement the amount of movement
+     */
+    @PostMapping(value = "/transferToApplication")
     public void transferToApplication(@RequestParam (name = "email") String email, @RequestParam(name= "amount") Double amountMovement ) {
-
-        log.info("Create a transfer money from account bank to application");
-        movementService.transfertToApplication(email, amountMovement);
+            movementService.transfertToApplication(email, amountMovement);
     }
-
-
 
 }

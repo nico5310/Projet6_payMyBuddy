@@ -20,7 +20,7 @@
     <nav class="navbar navbar-dark navbar expand" style="background-color: #e9ecef">
         <div class="container">
             <div class="navbar-brand bg-success" style="padding: 10px; border-radius: 5px">
-                Contact Management System
+                User Management System
             </div>
         </div>
 
@@ -30,7 +30,7 @@
         <hr>
         <h3>Save User</h3>
 
-        <form action="#" th:action="@{/user/save}" th:object = "${user}" method="post">
+        <form action="#" th:action="@{/save}" th:object = "${user}" method="get">
             <input type="text" th:field = "*{firstName}"
                    placeholder="FirstName"
                    class ="form-control mb-4 col-3">
@@ -40,15 +40,14 @@
             <input type="text" th:field = "*{email}"
                    placeholder="email"
                    class ="form-control mb-4 col-3">
-            <input type="text" th:field = "*{password}"
+            <input type="password" th:field = "*{password}"
                    placeholder="password"
                    class ="form-control mb-4 col-3">
 
 
             <button type="submit" class="btn btn-info col-1"> Save</button>
+            <a style="padding-left: 120px" th:href="@{/login}">Login</a>
 
-            <hr>
-            <a th:href="@{/}">Return to Home</a>
         </form>
     </div>
 

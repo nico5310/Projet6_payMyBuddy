@@ -34,7 +34,7 @@ public class MovementServiceIT {
 
 
     @Test
-    @DisplayName("Test findAllMovements to MovementServiceIT ")
+    @DisplayName("Test findAll to MovementServiceIT ")
     public void findAllMovementsTest() {
         //GIVEN
         Movement movement = new Movement();
@@ -44,7 +44,7 @@ public class MovementServiceIT {
         //WHEN
 
         //THEN
-        Assertions.assertEquals(500.0, movementService.findAllMovements().get(0).getAmountMovement());
+        Assertions.assertEquals(500.0, movementService.findAll().get(0).getAmountMovement());
 
     }
 

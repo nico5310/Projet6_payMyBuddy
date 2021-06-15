@@ -129,26 +129,26 @@ public class UserServiceIT {
         assertFalse(userRepository.findById(1).isPresent());
     }
 
-    @Test
-    @DisplayName("Test deleteUserByEmail to UserService")
-    void deleteByIdTest() {
-        //GIVEN
-        User user = new User();
-        user.setId(1);
-        user.setFirstName("James");
-        user.setLastName("Bond");
-        user.setEmail("james@007.com");
-        user.setPassword("spectre");
-        user.setBalance(10000.0);
-        user.setAccount(null);
-        user.setContactList(null);
-        userService.saveUser(user);
-
-        //WHEN
-        userService.deleteById(user.getId());
-        //THEN
-        assertFalse(userRepository.findById(1).isPresent());
-    }
+//    @Test
+//    @DisplayName("Test deleteUserByEmail to UserService")
+//    void deleteByIdTest() {
+//        //GIVEN
+//        User user = new User();
+//        user.setId(1);
+//        user.setFirstName("James");
+//        user.setLastName("Bond");
+//        user.setEmail("james@007.com");
+//        user.setPassword("spectre");
+//        user.setBalance(10000.0);
+//        user.setAccount(null);
+//        user.setContactList(null);
+//        userService.saveUser(user);
+//
+//        //WHEN
+//        userService.deleteById(user.getId());
+//        //THEN
+//        assertFalse(userRepository.findById(1).isPresent());
+//    }
 
 
 }

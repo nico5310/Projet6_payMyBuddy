@@ -1,24 +1,29 @@
 package com.nico5310.PayMyBuddy.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "email", unique = true )
@@ -36,7 +41,12 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Contact> contactList = new ArrayList<>();
 
-       public User(Integer id, String firstName, String lastName, String email, String password, Double balance, Account account, List<Contact> contactList) {
+    private boolean enabled;
+
+    private String role;
+
+
+    public User(Integer id, String firstName, String lastName, String email, String password, Double balance, Account account, List<Contact> contactList, boolean enabled, String role) {
 
         this.id          = id;
         this.firstName   = firstName;
@@ -46,6 +56,28 @@ public class User implements Serializable {
         this.balance     = balance;
         this.account     = account;
         this.contactList = contactList;
+        this.enabled     = enabled;
+        this.role        = role;
+    }
+
+    public boolean isEnabled() {
+
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+
+        this.enabled = enabled;
+    }
+
+    public String getRole() {
+
+        return role;
+    }
+
+    public void setRole(String role) {
+
+        this.role = role;
     }
 
     public User() {
@@ -94,6 +126,13 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+        grantedAuthorityList.add(new SimpleGrantedAuthority(this.role));
+        return grantedAuthorityList;
+    }
+
     public String getPassword() {
 
         return password;
@@ -103,6 +142,31 @@ public class User implements Serializable {
 
         this.password = password;
     }
+
+    @Override
+    public String getUsername() {
+
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+
+        return true;
+    }
+
 
     public Double getBalance() {
 
@@ -138,7 +202,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
 
-        return "User [id=" + getId() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", email=" + getEmail() + ", password=" + getPassword() + ", balance=" + getBalance() + ", account =" + getAccount() + ", contact=" + getContactList() + "]";
+        return "User [id=" + getId() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", email=" + getEmail() + ", password=" + getPassword() + ", balance=" + getBalance() + ", account =" + getAccount() + ", contact=" + getContactList() + ", enabled=" + enabled + ", role='" + role + '\''+ "]";
     }
 
 }

@@ -25,7 +25,7 @@ public class MovementService {
     @Autowired
     AccountRepository  accountRepository;
 
-    public List<Movement> findAllMovements() {
+    public List<Movement> findAll() {
 
         log.info("Get all movement");
         return movementRepository.findAll();
