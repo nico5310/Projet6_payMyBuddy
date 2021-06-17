@@ -58,7 +58,7 @@ public class TransactionController {
     }
 
     @PostMapping("/save")
-    public String saveTransaction(@AuthenticationPrincipal User user, @RequestParam(value = "transaction", required = false) Transaction transaction, Model model) {
+    public String saveTransaction(@AuthenticationPrincipal User user, @ModelAttribute("transactions") Transaction transaction, Model model) {
         transaction.setSenderUser(user);
         transactionService.saveTransaction(transaction);
 

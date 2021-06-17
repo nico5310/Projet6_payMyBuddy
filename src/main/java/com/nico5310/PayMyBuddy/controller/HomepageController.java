@@ -1,9 +1,6 @@
 package com.nico5310.PayMyBuddy.controller;
 
-import com.nico5310.PayMyBuddy.model.Account;
-import com.nico5310.PayMyBuddy.model.Contact;
-import com.nico5310.PayMyBuddy.model.Transaction;
-import com.nico5310.PayMyBuddy.model.User;
+import com.nico5310.PayMyBuddy.model.*;
 import com.nico5310.PayMyBuddy.service.AccountService;
 import com.nico5310.PayMyBuddy.service.TransactionService;
 import com.nico5310.PayMyBuddy.service.UserService;
@@ -75,7 +72,7 @@ public class HomepageController {
         List<Contact> contactList = userService.findContactByUserEmail(user.getEmail());
         model.addAttribute("user", user.getFirstName());// Welcome + FirstName
         model.addAttribute("balance", user.getBalance());// Amount of balance
-        model.addAttribute("userAddContact", userService.usersExeptFriends(user.getEmail())); // Add list contact
+        model.addAttribute("userAddContact", userService.usersExceptFriends(user.getEmail())); // Add list contact
         model.addAttribute("contacts", contactList); // List contacts for send money
         model.addAttribute("transactions", transactions); // List of transactions
         return "transfer";
@@ -89,7 +86,7 @@ public class HomepageController {
 
         model.addAttribute("contacts", contactList);
         model.addAttribute("accounts", userAccountList);
-//        model.addAttribute("bankTransfer", new BankTransfer());
+        model.addAttribute("movements", new Movement());
 
         return "profile";
     }

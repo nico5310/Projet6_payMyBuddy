@@ -26,7 +26,6 @@ public class Transaction implements Serializable {
 
 
 
-
     @OneToOne
     @JsonIgnore
     @JoinColumn(name = "sender_user_id")

@@ -17,9 +17,9 @@ import java.util.List;
 public class AccountService {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
     @Autowired
-    private UserRepository    userRepository;
+    private final UserRepository    userRepository;
 
     public AccountService(AccountRepository accountRepository, UserRepository userRepository) {
 

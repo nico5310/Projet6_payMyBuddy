@@ -28,16 +28,7 @@ public class TransactionService {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private FeeRepository feeRepository;
-//
-//
-//    private static  final double FEE = 0.5;
-//
-//
-//    private double calculateFee(double amountFee) {
-//        return amountFee * (FEE/100);
-//    }
+
 
 
     public List<Transaction> findTransactionsOfUserPrincipal(User user) {
@@ -48,42 +39,12 @@ public class TransactionService {
         return fullUserList;
     }
 
-    //
-    //    public Fee saveFee(Transaction transaction) {
-    //        Fee fee = new Fee();
-    //        fee.setTransaction(transaction);
-    //        fee.setAmountFee(calculateFee(transaction.getAmountTransaction()));
-    //        fee.setPercentFee(FEE);
-    //        fee.setDate(LocalDate.now());
-    //        fee.setUser(transaction.getSenderUser());
-    //        return feeRepository.save(fee);
-    //    }
-
     public Transaction saveTransaction(Transaction transaction) {
 
         log.info("Create a new transaction");
         transaction.setDate(LocalDate.now());
         return transactionRepository.save(transaction);
     }
-
-//
-//    @Transactional(rollbackOn = InsufficientFundsException.class)
-//    public void saveTransactionWithFee(Transaction transaction) throws InsufficientFundsException {
-//        saveTransaction(transaction);
-//        Fee fee = saveFee(transaction);
-//
-//        if (transaction.getSenderUser().getBalance() - transaction.getAmountTransaction() - fee.getAmountFee() <0) {
-//            throw new InsufficientFundsException("balance lower for transaction");
-//        }
-//        transaction.getSenderUser().setBalance(transaction.getSenderUser().getBalance()-transaction.getAmountTransaction()-fee.getAmountFee());
-//        userRepository.save(transaction.getSenderUser());
-//
-//        transaction.getRecipientUser().setBalance(transaction.getRecipientUser().getBalance()+ transaction.getAmountTransaction());
-//        userRepository.save(transaction.getRecipientUser());
-//
-//    }
-
-
 
     // METHOD TRANSFER
 

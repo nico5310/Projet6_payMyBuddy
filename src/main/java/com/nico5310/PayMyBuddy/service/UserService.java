@@ -122,7 +122,7 @@ public class UserService implements UserDetailsService {
         return contactRepository.findContactByUserId(id);
     }
 
-    public List<User> usersExeptFriends(String email) {
+    public List<User> usersExceptFriends(String email) {
 
         List<User> userList = userRepository.findAll();
         User       user     = userRepository.findUsersByEmail(email);
@@ -147,13 +147,8 @@ public class UserService implements UserDetailsService {
         contactRepository.save(contact1);
     }
 
-    public void deleteContact(Integer userId, Integer idContact) {
-        User user = userRepository.findById(userId).orElseThrow(()-> new NoFoundException("User don't exist"));
-        User contact = userRepository.findById(idContact).orElseThrow(()-> new NoFoundException("Contact don't exist"));
-        log.info("Delete userContact");
-        if (user.getContactList().contains(contact))
-            user.getContactList().remove(contact);
-        else throw new NoFoundException("Contact don't exist");
+    public void deleteContactByID(Integer contactId) {
+        contactRepository.deleteContactById(contactId);
 
     }
 
