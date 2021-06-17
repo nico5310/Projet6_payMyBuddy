@@ -24,8 +24,7 @@ public class Transaction implements Serializable {
     @Column (name = "description")
     private String description;
 
-    @Column (name = "fee")
-    private Double fee ;
+
 
 
     @OneToOne
@@ -38,13 +37,12 @@ public class Transaction implements Serializable {
     @JsonIgnoreProperties({"id", "lastName", "email", "password", "balance", "account", "contactList"})
     private User recipientUser;
 
-    public Transaction(Integer id, LocalDate date, Double amountTransaction, String description, Double fee, User senderUser, User recipientUser) {
+    public Transaction(Integer id, LocalDate date, Double amountTransaction, String description,User senderUser, User recipientUser) {
 
         this.id                = id;
         this.date              = date;
         this.amountTransaction = amountTransaction;
         this.description       = description;
-        this.fee               = fee;
         this.senderUser        = senderUser;
         this.recipientUser     = recipientUser;
     }
@@ -87,13 +85,6 @@ public class Transaction implements Serializable {
         this.description = description;
     }
 
-    public Double getFee() {
-        return getAmountTransaction()*0.005;
-    }
-
-    public void setFee(Double fee) {
-        this.fee = fee;
-    }
 
     public User getSenderUser() {
         return senderUser;

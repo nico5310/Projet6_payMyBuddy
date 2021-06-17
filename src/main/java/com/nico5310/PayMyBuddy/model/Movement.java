@@ -13,9 +13,6 @@ public class Movement implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
-    @Column(name = "type_operation")
-    private String typeOperation;
 
     @Column(name = "amount")
     private double amountMovement;
@@ -42,15 +39,7 @@ public class Movement implements Serializable {
         this.id = id;
     }
 
-    public String getTypeOperation() {
 
-        return typeOperation;
-    }
-
-    public void setTypeOperation(String typeOperation) {
-
-        this.typeOperation = typeOperation;
-    }
 
     public Double getAmountMovement() {
 

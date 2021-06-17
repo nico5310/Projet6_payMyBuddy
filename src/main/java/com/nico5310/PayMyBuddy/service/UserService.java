@@ -62,7 +62,7 @@ public class UserService implements UserDetailsService {
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new NoFoundException("User does exist !");
         } else {
-            log.info("Create user");
+            log.info("Create user valid");
             user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             user.setBalance(1000.0);
             user.setAccount(null);
@@ -114,6 +114,23 @@ public class UserService implements UserDetailsService {
 
         log.info("Get userContact by user email");
         return contactRepository.findContactByUserEmail(email);
+    }
+
+    public List<Contact> findContactByUserId(Integer id) {
+
+        log.info("Get userContact by user email");
+        return contactRepository.findContactByUserId(id);
+    }
+
+    public List<User> usersExeptFriends(String email) {
+
+        List<User> userList = userRepository.findAll();
+        User       user     = userRepository.findUsersByEmail(email);
+        userList.remove(userRepository.findByEmail(email));
+        for (Contact contact : user.getContactList()) {
+            userList.remove(contact.getUserContact());
+        }
+        return userList;
     }
 
     public void saveContact(Integer userId, Integer idContact) {

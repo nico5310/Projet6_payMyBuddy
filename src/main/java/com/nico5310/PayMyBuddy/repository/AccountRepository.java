@@ -4,7 +4,7 @@ import com.nico5310.PayMyBuddy.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface AccountRepository extends JpaRepository <Account, Integer> {
@@ -14,4 +14,5 @@ public interface AccountRepository extends JpaRepository <Account, Integer> {
     Account findAccountById(Integer idAccount);
 
 
+    List<Account> findByUserId(Integer id);
 }

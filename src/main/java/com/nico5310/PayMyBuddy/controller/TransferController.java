@@ -33,30 +33,10 @@ public class TransferController {
     @Autowired
     TransactionService transactionService;
 
-    /**
-     * Open homepage view
-     *
-     * @param user
-     *         the user
-     * @param model
-     *         the model
-     *
-     * @return the homepage form view
-     */
-    @GetMapping(value = "/transfer")
-    public String transferPage(@AuthenticationPrincipal User user, Model model) {
-        List<Transaction> transactions = transactionService.findTransactionsOfUserPrincipal(user);
-        List<Contact> contactList = userService.findContactByUserEmail(user.getEmail());
-        model.addAttribute("user", user.getFirstName());
-        model.addAttribute("balance", user.getBalance());
-        model.addAttribute("userAddContact", userService.userAddContact(user.getEmail()));
-        model.addAttribute("contacts", contactList);
-        model.addAttribute("transactions", transactions);
-        return "transfer";
-    }
+
 
     @GetMapping(value = "/send")
-    public String send(@AuthenticationPrincipal User user, @RequestParam(value = "emailContact", required = false) String emailContact,@RequestParam(value = "date", required = false) LocalDate date,@RequestParam(value = "amount", required = false) Double amountTransaction, @RequestParam(value = "description", required = false) String description, @RequestParam(value = "amount", required = false) Double amount) {
+    public String send(@AuthenticationPrincipal User user, @RequestParam(value = "emailContact", required = false) String emailContact, @RequestParam(value = "date", required = false) LocalDate date, @RequestParam(value = "amount", required = false) Double amountTransaction, @RequestParam(value = "description", required = false) String description) {
 
         transactionService.transfer(user.getEmail(), emailContact,date, amountTransaction, description);
         return "redirect:/homepage";

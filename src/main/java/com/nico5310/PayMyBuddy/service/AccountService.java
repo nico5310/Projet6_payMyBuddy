@@ -22,8 +22,9 @@ public class AccountService {
     private UserRepository    userRepository;
 
     public AccountService(AccountRepository accountRepository, UserRepository userRepository) {
+
         this.accountRepository = accountRepository;
-        this.userRepository = userRepository;
+        this.userRepository    = userRepository;
     }
 
 
@@ -39,26 +40,34 @@ public class AccountService {
         return accountRepository.findAccountByUserEmail(email);
     }
 
-    public Account findAccountById(Integer idAccount) {
+    public Account findAccountById(Integer id) {
 
         log.info("Get account by id");
-        return accountRepository.findById(idAccount).orElseThrow(() -> new NoFoundException("Account doesn't exist"));
+        return accountRepository.findById(id).orElseThrow(() -> new NoFoundException("Account doesn't exist"));
     }
 
-    public Account saveAccount(Integer idAccount, Account account) {
+    public List<Account> findByUserId(Integer id) {
 
-        if(accountRepository.findAccountByUserEmail(account.getIban())!=null) {
+        log.info("Get account by id");
+        return accountRepository.findByUserId(id);
+    }
+
+    public void saveAccount(Integer id, Account account) {
+
+        if (accountRepository.findAccountByUserEmail(account.getIban()) != null) {
             throw new NoFoundException("Account does exist!");
         }
         log.info("Create a new account with ");
-        account.setUser(userRepository.findById(idAccount).get());
+        account.setUser(userRepository.findById(id).get());
         accountRepository.save(account);
-        return account;
+
     }
 
-    public void deleteAccountById(Integer idAccount) {
+
+    public void deleteAccountById(Integer id) {
+
         log.info("Delete account by id");
-        accountRepository.deleteById(idAccount);
+        accountRepository.deleteById(id);
     }
 
 

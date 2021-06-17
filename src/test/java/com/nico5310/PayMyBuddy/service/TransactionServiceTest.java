@@ -45,19 +45,19 @@ public class TransactionServiceTest {
 
     }
 
-    @Test
-    @DisplayName("Test FindAllTransactions to Transaction service")
-    public void findAllTransactionsTest() {
-        //GIVEN
-        ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
-        //WHEN
-        when(transactionRepository.findAll()).thenReturn(transactionList);
-        List<Transaction> transactionList1 = transactionService.findAllTransactions();
-        //THEN
-        assertSame(transactionList, transactionList1);
-        assertTrue(transactionList1.isEmpty());
-        verify(transactionRepository).findAll();
-    }
+//    @Test
+//    @DisplayName("Test FindAllTransactions to Transaction service")
+//    public void findAllTransactionsTest() {
+//        //GIVEN
+//        ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
+//        //WHEN
+//        when(transactionRepository.findAll()).thenReturn(transactionList);
+//        List<Transaction> transactionList1 = transactionService.findAllTransactions();
+//        //THEN
+//        assertSame(transactionList, transactionList1);
+//        assertTrue(transactionList1.isEmpty());
+//        verify(transactionRepository).findAll();
+//    }
 
 
 }

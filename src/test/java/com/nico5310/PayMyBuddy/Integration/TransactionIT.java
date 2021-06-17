@@ -28,20 +28,20 @@ public class TransactionIT {
     private TransactionService transactionService;
 
 
-    @Test
-    @DisplayName("Test findAllTransactions to TransactionServiceIT ")
-    public void findAllTransactionsTest() {
-        //GIVEN
-        Transaction transaction = new Transaction();
-        transaction.setId(1);
-        transaction.setAmountTransaction(500.0);
-        transactionRepository.save(transaction);
-        //WHEN
-
-        //THEN
-        Assertions.assertEquals(500.0, transactionService.findAllTransactions().get(0).getAmountTransaction());
-
-    }
+//    @Test
+//    @DisplayName("Test findAllTransactions to TransactionServiceIT ")
+//    public void findAllTransactionsTest() {
+//        //GIVEN
+//        Transaction transaction = new Transaction();
+//        transaction.setId(1);
+//        transaction.setAmountTransaction(500.0);
+//        transactionRepository.save(transaction);
+//        //WHEN
+//
+//        //THEN
+//        Assertions.assertEquals(500.0, transactionService.findAllTransactions().get(0).getAmountTransaction());
+//
+//    }
 
 //    @Test
 //    @DisplayName("Test findTransactionById to TransactionServiceIT ")

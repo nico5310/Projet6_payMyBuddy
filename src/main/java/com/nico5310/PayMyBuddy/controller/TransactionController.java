@@ -1,5 +1,6 @@
 package com.nico5310.PayMyBuddy.controller;
 
+import com.nico5310.PayMyBuddy.exception.InsufficientFundsException;
 import com.nico5310.PayMyBuddy.model.Transaction;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.service.TransactionService;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping(value= "/transactions")
+@RequestMapping(value= "/transaction")
 public class TransactionController {
 
     @Autowired
@@ -27,10 +28,8 @@ public class TransactionController {
      */
     private List<Transaction> transactions;
 
-
-    @GetMapping(value = "")
-    public List<Transaction> findAll() {
-        return transactionService.findAllTransactions();
+    public TransactionController(TransactionService transactionService) {
+        this.transactionService = transactionService;
     }
 
     /**
@@ -52,11 +51,18 @@ public class TransactionController {
     }
 
     @PostMapping(value = "/transfer")
-    public void transfer(@RequestParam(name = "emailSender") String emailSender, @RequestParam(name = "emailReceiver") String emailRecipient, @RequestParam(name = "date")
+    public void transfer(@RequestParam(name = "emailSender") String emailSender, @RequestParam(name = "emailRecipient") String emailRecipient, @RequestParam(name = "date")
     LocalDate date, @RequestParam(name = "amount") Double amountTransaction, @RequestParam(name = "description") String description) {
 
         transactionService.transfer(emailSender, emailRecipient, date, amountTransaction, description);
     }
 
+    @PostMapping("/save")
+    public String saveTransaction(@AuthenticationPrincipal User user, @RequestParam(value = "transaction", required = false) Transaction transaction, Model model) {
+        transaction.setSenderUser(user);
+        transactionService.saveTransaction(transaction);
+
+        return "redirect:/homepage";
+    }
 
 }

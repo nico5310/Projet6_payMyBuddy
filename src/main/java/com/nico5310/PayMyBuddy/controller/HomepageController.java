@@ -1,7 +1,10 @@
 package com.nico5310.PayMyBuddy.controller;
 
+import com.nico5310.PayMyBuddy.model.Account;
+import com.nico5310.PayMyBuddy.model.Contact;
 import com.nico5310.PayMyBuddy.model.Transaction;
 import com.nico5310.PayMyBuddy.model.User;
+import com.nico5310.PayMyBuddy.service.AccountService;
 import com.nico5310.PayMyBuddy.service.TransactionService;
 import com.nico5310.PayMyBuddy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,9 @@ public class HomepageController {
     @Autowired
     TransactionService transactionService;
 
+    @Autowired
+    AccountService accountService;
+
     /**
      * Open homepage view
      *
@@ -45,14 +51,48 @@ public class HomepageController {
     @GetMapping(value = "/homepage")
     public String homePage(@AuthenticationPrincipal User user, Model model) {
 
-        List<Transaction> transactions = transactionService.findTransactionsOfUserPrincipal(user);
+        List<Transaction> transactions = transactionService.findTransactionsOfUserPrincipal(user); // List Transactions
 
-        model.addAttribute("user", user.getFirstName());
-        model.addAttribute("balance", user.getBalance());
-        model.addAttribute("transactions", transactions);
+        model.addAttribute("user", user.getFirstName()); // Welcome + FirstName
+        model.addAttribute("balance", user.getBalance()); // Amount of balance
+        model.addAttribute("transactions", transactions); // List of transactions
         return "homepage";
     }
 
+    /**
+     * Open homepage view
+     *
+     * @param user
+     *         the user
+     * @param model
+     *         the model
+     *
+     * @return the homepage form view
+     */
+    @GetMapping(value = "/transfer")
+    public String transferPage(@AuthenticationPrincipal User user, Model model) {
+        List<Transaction> transactions = transactionService.findTransactionsOfUserPrincipal(user);
+        List<Contact> contactList = userService.findContactByUserEmail(user.getEmail());
+        model.addAttribute("user", user.getFirstName());// Welcome + FirstName
+        model.addAttribute("balance", user.getBalance());// Amount of balance
+        model.addAttribute("userAddContact", userService.usersExeptFriends(user.getEmail())); // Add list contact
+        model.addAttribute("contacts", contactList); // List contacts for send money
+        model.addAttribute("transactions", transactions); // List of transactions
+        return "transfer";
+    }
+
+    @GetMapping("/profile")
+    public String getProfile(@AuthenticationPrincipal User user, Model model) {
+
+        List<Account> userAccountList = accountService.findByUserId(user.getId()); // List account user
+        List<Contact> contactList = userService.findContactByUserId(user.getId()); // List contact user
+
+        model.addAttribute("contacts", contactList);
+        model.addAttribute("accounts", userAccountList);
+//        model.addAttribute("bankTransfer", new BankTransfer());
+
+        return "profile";
+    }
 
 
 
