@@ -63,23 +63,23 @@ public class MovementServiceIT {
 
     }
 
-    @Test
-    @DisplayName("Test transferToAccountBank to TransactionServiceIT ")
-    public void transferToAccountBankTest() {
-        //GIVEN
-        User user1 = new User();
-        user1.setId(1);
-        user1.setFirstName("Nicolas");
-        user1.setLastName("Biancucci");
-        user1.setEmail("nico@gmail.com");
-        user1.setPassword("azerty");
-        user1.setBalance(10000.0);
-        userRepository.save(user1);
-        //WHEN
-        movementService.transferToAccountBank(user1.getEmail(), 2000.0);
-        //THEN
-        Assertions.assertEquals(userRepository.findById(user1.getId()).get().getBalance(), 8000.0);
-    }
+//    @Test
+//    @DisplayName("Test transferToAccountBank to TransactionServiceIT ")
+//    public void transferToAccountBankTest() {
+//        //GIVEN
+//        User user1 = new User();
+//        user1.setId(1);
+//        user1.setFirstName("Nicolas");
+//        user1.setLastName("Biancucci");
+//        user1.setEmail("nico@gmail.com");
+//        user1.setPassword("azerty");
+//        user1.setBalance(10000.0);
+//        userRepository.save(user1);
+//        //WHEN
+//        movementService.transferToAccountBank(user1.getEmail(), 2000.0);
+//        //THEN
+//        Assertions.assertEquals(userRepository.findById(user1.getId()).get().getBalance(), 8000.0);
+//    }
 
 //    @Test
 //    @DisplayName("Test transfertToApplication to TransactionServiceIT ")

@@ -1,10 +1,12 @@
 package com.nico5310.PayMyBuddy.model;
 
+import com.sun.istack.NotNull;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,22 +22,26 @@ public class User implements Serializable, UserDetails {
     @Column(name = "id")
     private Integer id;
 
+    @NotBlank
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email", unique = true )
+    @NotBlank
+    @Column(name = "email", unique = true)
     private String email;
 
+    @NotBlank
     @Column(name = "password")
     private String password;
 
     @Column(name = "balance")
     private Double balance;
 
-    @OneToOne (mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Account account;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
@@ -60,77 +66,62 @@ public class User implements Serializable, UserDetails {
         this.role        = role;
     }
 
-    public boolean isEnabled() {
+    public User() {
 
+    }
+
+    public boolean isEnabled() {
         return enabled;
     }
 
     public void setEnabled(boolean enabled) {
-
         this.enabled = enabled;
     }
 
     public String getRole() {
-
         return role;
     }
 
     public void setRole(String role) {
-
         this.role = role;
     }
 
-    public User() {
-
-
-    }
-
-    // GETTERS & SETTERS
     public Integer getId() {
-
         return id;
     }
 
     public void setId(Integer id) {
-
         this.id = id;
     }
 
     public String getFirstName() {
-
         return firstName;
     }
 
     public void setFirstName(String firstName) {
-
         this.firstName = firstName;
     }
 
     public String getLastName() {
-
         return lastName;
     }
 
     public void setLastName(String lastName) {
-
         this.lastName = lastName;
     }
 
     public String getEmail() {
-
         return email;
     }
 
     public void setEmail(String email) {
-
         this.email = email;
     }
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-        grantedAuthorityList.add(new SimpleGrantedAuthority(this.role));
-        return grantedAuthorityList;
+        return null;
     }
 
     public String getPassword() {
@@ -138,15 +129,10 @@ public class User implements Serializable, UserDetails {
         return password;
     }
 
-    public void setPassword(String password) {
-
-        this.password = password;
-    }
-
     @Override
     public String getUsername() {
 
-        return email;
+        return this.email;
     }
 
     @Override
@@ -165,6 +151,11 @@ public class User implements Serializable, UserDetails {
     public boolean isCredentialsNonExpired() {
 
         return true;
+    }
+
+    public void setPassword(String password) {
+
+        this.password = password;
     }
 
 
@@ -202,7 +193,7 @@ public class User implements Serializable, UserDetails {
     @Override
     public String toString() {
 
-        return "User [id=" + getId() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", email=" + getEmail() + ", password=" + getPassword() + ", balance=" + getBalance() + ", account =" + getAccount() + ", contact=" + getContactList() + ", enabled=" + enabled + ", role='" + role + '\''+ "]";
+        return "User [id=" + getId() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", email=" + getEmail() + ", password=" + getPassword() + ", balance=" + getBalance() + ", account =" + getAccount() + ", contact=" + getContactList() + ", enabled=" + enabled + ", role='" + role + '\'' + "]";
     }
 
 }

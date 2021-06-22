@@ -16,7 +16,8 @@ public class Account  implements Serializable {
     @Column(name = "iban")
     private String iban;
 
-    private String bank;
+
+    private Double balance;
 
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -24,11 +25,11 @@ public class Account  implements Serializable {
     @JsonIgnoreProperties({"password", "balance", "account", "contactList"})
     private User user;
 
-    public Account(int id, String iban,String bank, User user) {
+    public Account(int id, String iban,Double balance, User user) {
 
         this.id   = id;
         this.iban = iban;
-        this.bank = bank;
+        this.balance = balance;
         this.user = user;
     }
 
@@ -52,15 +53,14 @@ public class Account  implements Serializable {
         this.iban = iban;
     }
 
+    public Double getBalance() {
 
-    public String getBank() {
-
-        return bank;
+        return balance;
     }
 
-    public void setBank(String bank) {
+    public void setBalance(Double balance) {
 
-        this.bank = bank;
+        this.balance = balance;
     }
 
     public User getUser() {

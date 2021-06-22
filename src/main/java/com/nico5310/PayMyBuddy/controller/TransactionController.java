@@ -1,10 +1,8 @@
 package com.nico5310.PayMyBuddy.controller;
 
-import com.nico5310.PayMyBuddy.exception.InsufficientFundsException;
 import com.nico5310.PayMyBuddy.model.Transaction;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.service.TransactionService;
-import com.nico5310.PayMyBuddy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
@@ -20,29 +18,14 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @Autowired
-    private UserService userService;
 
-    /**
-     * List of Transaction object
-     */
     private List<Transaction> transactions;
 
     public TransactionController(TransactionService transactionService) {
         this.transactionService = transactionService;
     }
 
-    /**
-     * Open homepage view
-     *
-     * @param user
-     *         the user
-     * @param model
-     *         the model
-     *
-     * @return the homepage form view
-     */
-    @GetMapping(value = "/transfer")
+     @GetMapping(value = "/transfer")
     public String transferPage(@AuthenticationPrincipal User user, Model model) {
 
         transactions = transactionService.findTransactionsOfUserPrincipal(user);

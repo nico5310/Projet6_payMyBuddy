@@ -6,8 +6,6 @@ import com.nico5310.PayMyBuddy.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
@@ -17,4 +15,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
    User findUsersByEmail(String email);
 
     void deleteAllById(Integer id);
+
+    boolean existsByEmail(String email);
 }

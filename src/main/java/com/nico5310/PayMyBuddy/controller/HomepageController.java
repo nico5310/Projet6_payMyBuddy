@@ -12,39 +12,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-/**
- * HomePage controller
- *
- * @author Nicolas
- */
+
 @Controller
 public class HomepageController {
 
-    /**
-     * @see UserService
-     */
+
     @Autowired
     UserService        userService;
 
-    /**
-     * @see TransactionService
-     */
+
     @Autowired
     TransactionService transactionService;
 
     @Autowired
     AccountService accountService;
 
-    /**
-     * Open homepage view
-     *
-     * @param user
-     *         the user
-     * @param model
-     *         the model
-     *
-     * @return the homepage form view
-     */
+
     @GetMapping(value = "/homepage")
     public String homePage(@AuthenticationPrincipal User user, Model model) {
 
@@ -56,16 +39,7 @@ public class HomepageController {
         return "homepage";
     }
 
-    /**
-     * Open homepage view
-     *
-     * @param user
-     *         the user
-     * @param model
-     *         the model
-     *
-     * @return the homepage form view
-     */
+
     @GetMapping(value = "/transfer")
     public String transferPage(@AuthenticationPrincipal User user, Model model) {
         List<Transaction> transactions = transactionService.findTransactionsOfUserPrincipal(user);
@@ -90,6 +64,7 @@ public class HomepageController {
 
         return "profile";
     }
+
 
 
 

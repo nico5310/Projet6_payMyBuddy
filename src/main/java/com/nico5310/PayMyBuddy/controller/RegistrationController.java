@@ -1,5 +1,6 @@
 package com.nico5310.PayMyBuddy.controller;
 
+import com.nico5310.PayMyBuddy.exception.NoCreateUserPossibleException;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import javax.validation.Valid;
 
 
 @Controller
-public class Registration {
+public class RegistrationController {
 
     @Autowired
     private UserService userService;
@@ -30,7 +31,7 @@ public class Registration {
     }
 
     @PostMapping(value = "/save")
-    public String addUser(@Valid @ModelAttribute("user") User user, Model model) {
+    public String addUser(@Valid @ModelAttribute("user") User user, Model model) throws NoCreateUserPossibleException {
 
         userService.saveUser(user);
         return "redirect:/login";

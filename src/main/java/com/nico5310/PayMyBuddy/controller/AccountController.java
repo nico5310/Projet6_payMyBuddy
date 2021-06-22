@@ -11,42 +11,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Account Controller
- * @author Nicolas
- */
+
 @Controller
 @RequestMapping("/accounts")
 public class AccountController {
 
-    /**
-     * @see AccountService
-     */
+
     @Autowired
     private AccountService accountService;
 
-    /**
-     *Find all accounts
-     * @return all accounts
-     */
+
     @GetMapping
     public List<Account> findAll() {
 
         return accountService.findAllAccounts();
     }
 
-    /**
-     * find account by email
-     * @param email of account to find
-     * @return an account corresponding to the email
-     */
     @GetMapping(value = "/{email}")
     public Account findByEmail(@PathVariable String email) {
 
         return accountService.findAccountByEmail(email);
     }
-
-
 
     //////////////////////////////////
     @GetMapping(value = "/addAccount")
@@ -54,25 +39,22 @@ public class AccountController {
 
         Account account = new Account();
         model.addAttribute(account);
-
         return "accountregistration";
     }
 
     @GetMapping(value = "/save")
     public String saveAccount(@AuthenticationPrincipal User user, @ModelAttribute(value = "account") Account account) {
+
         account.setUser(user);
         accountService.saveAccount(user.getId(), account);
         return "redirect:/profile";
     }
-    /**
-     * delete account
-     * @param id of account delete
-     */
+
     @GetMapping(value = "/deleteAccount")
     public String deleteAccount(@RequestParam("accountId") Integer id) {
 
         accountService.deleteAccountById(id);
-        return "profile";
+        return "redirect:/profile";
     }
 
 }

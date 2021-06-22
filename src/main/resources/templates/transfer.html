@@ -159,21 +159,22 @@
             <div class="col-12">
                 <table class="table table-secondary table-bordered table-striped table-hover text-center">
                     <thead class="table-success">
-                    <tr>
-                        <th class="text-center">Date</th>
-                        <th class="text-center">Contacts</th>
-                        <th class="text-center">Amount</th>
-                        <th class="text-center">Description</th>
-                    </tr>
+                        <tr>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Sender</th>
+                            <th class="text-center">Recipient</th>
+                            <th class="text-center">Amount</th>
+                            <th class="text-center">Description</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="transaction : ${transactions}">
-                        <td th:text="${transaction.getDate()}"></td>
-                        <td th:text="${transaction.getRecipientUser().getFirstName() + ' '+ transaction.getRecipientUser().getLastName()}"></td>
-                        <td th:text="${transaction.getAmountTransaction()}+'€'"></td>
-                        <td th:text="${transaction.getDescription()}"></td>
-
-                    </tr>
+                        <tr th:each="transaction : ${transactions}">
+                            <td th:text="${transaction.getDate()}"></td>
+                            <td th:text="${transaction.getSenderUser().getFirstName() + ' '+ transaction.getSenderUser().getLastName()}"></td>
+                            <td th:text="${transaction.getRecipientUser().getFirstName() + ' '+ transaction.getRecipientUser().getLastName()}"></td>
+                            <td th:text="${transaction.getAmountTransaction()}+'€'"></td>
+                            <td th:text="${transaction.getDescription()}"></td>
+                        </tr>
                     </tbody>
 
                 </table>

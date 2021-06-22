@@ -1,5 +1,7 @@
 package com.nico5310.PayMyBuddy.service;
 
+
+import com.nico5310.PayMyBuddy.exception.NoCreateUserPossibleException;
 import com.nico5310.PayMyBuddy.exception.NoFoundException;
 import com.nico5310.PayMyBuddy.model.Contact;
 import com.nico5310.PayMyBuddy.model.User;
@@ -13,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +27,9 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
 
     @Autowired
-    private final UserRepository    userRepository;
+    private  UserRepository    userRepository;
     @Autowired
-    private final ContactRepository contactRepository;
+    private  ContactRepository contactRepository;
 
 
     public UserService(UserRepository userRepository, ContactRepository contactRepository) {
@@ -55,27 +58,26 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(email);
     }
 
-    public void saveUser(User user) {
+    public void saveUser(User user) throws NoCreateUserPossibleException {
 
-        List<Contact> contactList = new ArrayList<>();
-
-        if (userRepository.findByEmail(user.getEmail()) != null) {
-            throw new NoFoundException("User does exist !");
-        } else {
+        if(user.getFirstName() != "" && user.getLastName() != "" && user.getEmail() != "" && user.getPassword()  != ""){
+            List<Contact> contactList = new ArrayList<>();
             log.info("Create user valid");
             user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             user.setBalance(1000.0);
             user.setAccount(null);
             user.setContactList(contactList);
             user.setEnabled(true);
-            user.setRole("USER");
             userRepository.save(user);
-
+        }
+        else{
+            throw new NoCreateUserPossibleException("Parameters to save user are invalid");
         }
     }
 
-    public void updateUser(Integer id, User userUpdated) {
 
+    public void updateUser(Integer id, User userUpdated) {
+        log.info("Update user valid");
         Optional<User> user = userRepository.findById(id);
         user.get().setFirstName(userUpdated.getFirstName());
         user.get().setLastName(userUpdated.getLastName());
@@ -85,10 +87,9 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> userAddContact(String email) {
-
+        log.info("Add Contact User");
         List<User> userList = userRepository.findAll();
         User       user     = userRepository.findByEmail(email);
-
         for (Contact contact : user.getContactList()) {
             userList.remove(contact.getUserContact());
         }
@@ -123,7 +124,7 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> usersExceptFriends(String email) {
-
+        log.info("Find all users except User principal");
         List<User> userList = userRepository.findAll();
         User       user     = userRepository.findUsersByEmail(email);
         userList.remove(userRepository.findByEmail(email));
@@ -148,6 +149,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void deleteContactByID(Integer contactId) {
+        log.info("Delete contact By Id");
         contactRepository.deleteContactById(contactId);
 
     }

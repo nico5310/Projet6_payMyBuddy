@@ -1,28 +1,29 @@
 drop database if exists paymybuddy;
-
 create database paymybuddy;
-use
-    paymybuddy;
+use paymybuddy;
+
 CREATE TABLE user
 (
     id         INT AUTO_INCREMENT NOT NULL,
     first_name VARCHAR(40)        NOT NULL,
     last_name  VARCHAR(40)        NOT NULL,
-    email      VARCHAR(50)        NOT NULL,
+    email      VARCHAR(100)       NOT NULL UNIQUE,
     password   VARCHAR(200)       NOT NULL,
     balance    DECIMAL(10, 2)     NOT NULL,
     enabled    BOOLEAN DEFAULT 1,
-    role       VARCHAR(30),
     PRIMARY KEY (id)
+
 )
     ENGINE = InnoDB;
 
 CREATE TABLE account
 (
     id      INT AUTO_INCREMENT NOT NULL,
-    iban    VARCHAR(34)        NOT NULL,
+    iban    VARCHAR(34)        NOT NULL UNIQUE,
     user_id INT                NOT NULL,
+    balance INT                NOT NULL,
     PRIMARY KEY (id)
+
 )
     ENGINE = InnoDB;
 

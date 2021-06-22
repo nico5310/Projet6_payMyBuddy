@@ -1,7 +1,7 @@
 package com.nico5310.PayMyBuddy.service;
 
-import com.nico5310.PayMyBuddy.exception.InsufficientFundsException;
 import com.nico5310.PayMyBuddy.exception.NoFoundException;
+import com.nico5310.PayMyBuddy.model.Account;
 import com.nico5310.PayMyBuddy.model.Movement;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.AccountRepository;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.List;
 
 @Log4j2
@@ -43,47 +42,34 @@ public class MovementService {
     }
 
     // METHOD MOVEMENT
-    @Transactional
-    public void transferToAccountBank(String email, Double amountMovement) {
-
-        log.info("Transfer an amount of : " + amountMovement + "from application to account bank" + email);
-        User user = userRepository.findByEmail(email);
-        if (user.getBalance() < amountMovement) {
-            throw new RuntimeException("Insufficient balance");
-        } else {
-            user.setBalance(user.getBalance() - amountMovement);
-            userRepository.save(user);
-        }
-    }
-
-    @Transactional
-    public void transfertToApplication(User user, Movement movement) {
-
-        log.info("Transfer an amount of : " + movement.getAmountMovement() + "from account bank to Application");
-        user.setBalance(user.getBalance() + movement.getAmountMovement());
-        movement.setUser(user);
+    public void transfertToApplication(String emailUser, Double amountMovement)  {
+        log.info("Transfer to application");
+        User user = userRepository.findUsersByEmail(emailUser);
+        user.setBalance(user.getBalance() + amountMovement);
         userRepository.save(user);
-        movementService.saveMovement(movement);
+
+        Account account = accountRepository.findAccountByUserEmail(emailUser);
+        account.setBalance(account.getBalance() - amountMovement);
+        accountRepository.save(account);
+
     }
 
-    @Transactional
-    public void saveMovement(Movement movement) {
-        movement.setDate(LocalDate.now());
-        movementRepository.save(movement);
-    }
 
-    @Transactional(rollbackOn = InsufficientFundsException.class)
-    public void subtractToBalance(User user, Movement movement) throws InsufficientFundsException {
-        if (user.getBalance()-movement.getAmountMovement() <0) {
-            throw new InsufficientFundsException("Insufficient funds to Balance votre Movement to account");
-        }
-        user.setBalance(user.getBalance()- movement.getAmountMovement());
-        movement.setAmountMovement(movement.getAmountMovement() *-1);
-        movement.setUser(user);
+
+    public void transferToAccountBank(String emailUser, Double amountMovement) {
+        log.info("Transfer to Account bank");
+        User user = userRepository.findUsersByEmail(emailUser);
+        user.setBalance(user.getBalance() - amountMovement);
         userRepository.save(user);
-        movementService.saveMovement(movement);
 
+        Account account = accountRepository.findAccountByUserEmail(emailUser);
+        account.setBalance(account.getBalance() + amountMovement);
+        accountRepository.save(account);
     }
+
+
+
+
 
 
 

@@ -2,7 +2,6 @@ package com.nico5310.PayMyBuddy.service;
 
 
 import com.nico5310.PayMyBuddy.model.Transaction;
-
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.TransactionRepository;
 import com.nico5310.PayMyBuddy.repository.UserRepository;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

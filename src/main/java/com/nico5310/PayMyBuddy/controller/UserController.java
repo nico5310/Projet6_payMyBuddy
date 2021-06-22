@@ -5,7 +5,6 @@ import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,23 +59,5 @@ public class UserController {
         userService.deleteContactByID(contactId);
         return "redirect:/profile";
     }
-
-
-
-
-//    @DeleteMapping(value = "/user/{id}")
-//    public void deleteById(@PathVariable Integer id) {
-//
-//        log.info("Delete user by id" + id);
-//        userService.deleteById(id);
-//    }
-//
-//    @DeleteMapping(value = "/{email}")
-//    public void deleteByEmail(@PathVariable String email) {
-//
-//        log.info("Delete user by email" + email);
-//        userService.deleteByEmail(email);
-//    }
-
 
 }

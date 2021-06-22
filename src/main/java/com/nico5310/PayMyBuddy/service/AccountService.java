@@ -59,10 +59,10 @@ public class AccountService {
         }
         log.info("Create a new account with ");
         account.setUser(userRepository.findById(id).get());
+        account.setBalance(10000.0);
         accountRepository.save(account);
 
     }
-
 
     public void deleteAccountById(Integer id) {
 
