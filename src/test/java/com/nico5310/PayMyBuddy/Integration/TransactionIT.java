@@ -1,5 +1,6 @@
 package com.nico5310.PayMyBuddy.Integration;
 
+import com.nico5310.PayMyBuddy.model.Account;
 import com.nico5310.PayMyBuddy.model.Transaction;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.TransactionRepository;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.annotation.DirtiesContext;
 
 import java.time.LocalDate;
@@ -28,35 +30,51 @@ public class TransactionIT {
     private TransactionService transactionService;
 
 
-//    @Test
-//    @DisplayName("Test findAllTransactions to TransactionServiceIT ")
-//    public void findAllTransactionsTest() {
-//        //GIVEN
-//        Transaction transaction = new Transaction();
-//        transaction.setId(1);
-//        transaction.setAmountTransaction(500.0);
-//        transactionRepository.save(transaction);
-//        //WHEN
-//
-//        //THEN
-//        Assertions.assertEquals(500.0, transactionService.findAllTransactions().get(0).getAmountTransaction());
-//
-//    }
+    @Test
+    @DisplayName("Test findTransactionsOfUserPrincipal to TransactionServiceIT ")
+    public void findTransactionsOfUserPrincipalTest() {
+        //GIVEN
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("Nicolas");
+        user.setLastName("Biancucci");
+        user.setEmail("nico@gmail.com");
+        user.setPassword("azerty");
+        user.setBalance(10000.0);
+        user.setAccount(new Account());
+        user.setContactList(null);
+        user.setEnabled(true);
+        user.setRole("USER");
+        userRepository.save(user);
 
-//    @Test
-//    @DisplayName("Test findTransactionById to TransactionServiceIT ")
-//    public void findTransactionByIdTest() {
-//        //GIVEN
-//        Transaction transaction = new Transaction();
-//        transaction.setId(1);
-//        transaction.setAmountTransaction(500.0);
-//        transactionRepository.save(transaction);
-//        //WHEN
-//
-//        //THEN
-//        Assertions.assertEquals(500.0, transactionService.findTransactionById(1).getAmountTransaction());
-//
-//    }
+        User user2 = new User();
+        user2.setId(2);
+        user2.setFirstName("James");
+        user2.setLastName("Bond");
+        user2.setEmail("james@007.com");
+        user2.setPassword("spectre");
+        user2.setBalance(10000.0);
+        user2.setAccount(new Account());
+        user2.setContactList(null);
+        user2.setEnabled(true);
+        user2.setRole("USER");
+        userRepository.save(user2);
+
+        Transaction transaction = new Transaction();
+        transaction.setId(1);
+        transaction.setDate(LocalDate.now());
+        transaction.setAmountTransaction(500.0);
+        transaction.setSenderUser(user);
+        transaction.setRecipientUser(user2);
+        transactionRepository.save(transaction);
+
+        //WHEN
+
+        //THEN
+        Assertions.assertEquals(transactionService.findTransactionsOfUserPrincipal(user).get(0).getAmountTransaction(), 500.0);
+
+    }
+
 
     @Test
     @DisplayName("Test TransferController to TransactionServiceIT ")

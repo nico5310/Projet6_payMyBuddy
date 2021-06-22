@@ -86,15 +86,7 @@ public class UserService implements UserDetailsService {
         userRepository.save(user.get());
     }
 
-    public List<User> userAddContact(String email) {
-        log.info("Add Contact User");
-        List<User> userList = userRepository.findAll();
-        User       user     = userRepository.findByEmail(email);
-        for (Contact contact : user.getContactList()) {
-            userList.remove(contact.getUserContact());
-        }
-        return userList;
-    }
+
 
     public void deleteByEmail(String email) {
 

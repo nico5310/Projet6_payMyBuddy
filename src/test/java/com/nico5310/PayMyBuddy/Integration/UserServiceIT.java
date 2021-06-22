@@ -1,5 +1,6 @@
 package com.nico5310.PayMyBuddy.Integration;
 
+import com.nico5310.PayMyBuddy.exception.NoCreateUserPossibleException;
 import com.nico5310.PayMyBuddy.model.User;
 import com.nico5310.PayMyBuddy.repository.ContactRepository;
 import com.nico5310.PayMyBuddy.repository.UserRepository;
@@ -80,58 +81,60 @@ public class UserServiceIT {
         assert (user.getBalance().equals(10000.0));
     }
 
-//    @Test
-//    @DisplayName("Test updateUser to UserService")
-//    void updateUserTest() {
-//        //GIVEN
-//        User user = new User();
-//        user.setId(1);
-//        user.setFirstName("James");
-//        user.setLastName("Bond");
-//        user.setEmail("james@007.com");
-//        user.setPassword("spectre");
-//        user.setBalance(10000.0);
-//        userService.saveUser(user, model);
-//
-//        List<User> userList = userRepository.findAll();
-//        Assertions.assertTrue(userList.toString().contains("James"));
-//
-//        User userUpdate = new User();
-//        userUpdate.setFirstName("Lewis");
-//        userUpdate.setLastName("Hamilton");
-//        userUpdate.setEmail("44@44.com");
-//        userUpdate.setPassword("mercedes");
-//        userUpdate.setBalance(10000.0);
-//        //WHEN
-//        userService.updateUser(user.getId(), userUpdate);
-//        //THEN
-//        Assertions.assertTrue(userRepository.findById(1).get().getLastName().contains("Hamilton"));
-//    }
+    @Test
+    @DisplayName("Test updateUser to UserService")
+    void updateUserTest() throws NoCreateUserPossibleException {
+        //GIVEN
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("James");
+        user.setLastName("Bond");
+        user.setEmail("james@007.com");
+        user.setPassword("spectre");
+        user.setBalance(10000.0);
+        userService.saveUser(user);
 
+        List<User> userList = userRepository.findAll();
+        Assertions.assertTrue(userList.toString().contains("James"));
+
+        User userUpdate = new User();
+        userUpdate.setFirstName("Lewis");
+        userUpdate.setLastName("Hamilton");
+        userUpdate.setEmail("44@44.com");
+        userUpdate.setPassword("mercedes");
+        userUpdate.setBalance(10000.0);
+        //WHEN
+        userService.updateUser(user.getId(), userUpdate);
+        //THEN
+        Assertions.assertTrue(userRepository.findById(1).get().getLastName().contains("Hamilton"));
+    }
+
+
+
+    @Test
+    @DisplayName("Test deleteUserByEmail to UserService")
+    void deleteUserByEmailTest() throws NoCreateUserPossibleException {
+        //GIVEN
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("James");
+        user.setLastName("Bond");
+        user.setEmail("james@007.com");
+        user.setPassword("spectre");
+        user.setBalance(10000.0);
+        user.setAccount(null);
+        user.setContactList(null);
+        userService.saveUser(user);
+
+        //WHEN
+        userService.deleteByEmail(user.getEmail());
+        //THEN
+        assertFalse(userRepository.findById(1).isPresent());
+    }
+//
 //    @Test
 //    @DisplayName("Test deleteUserByEmail to UserService")
-//    void deleteUserByEmailTest() {
-//        //GIVEN
-//        User user = new User();
-//        user.setId(1);
-//        user.setFirstName("James");
-//        user.setLastName("Bond");
-//        user.setEmail("james@007.com");
-//        user.setPassword("spectre");
-//        user.setBalance(10000.0);
-//        user.setAccount(null);
-//        user.setContactList(null);
-//        userService.saveUser(user, model);
-//
-//        //WHEN
-//        userService.deleteByEmail(user.getEmail());
-//        //THEN
-//        assertFalse(userRepository.findById(1).isPresent());
-//    }
-
-//    @Test
-//    @DisplayName("Test deleteUserByEmail to UserService")
-//    void deleteByIdTest() {
+//    void deleteByIdTest() throws NoCreateUserPossibleException {
 //        //GIVEN
 //        User user = new User();
 //        user.setId(1);

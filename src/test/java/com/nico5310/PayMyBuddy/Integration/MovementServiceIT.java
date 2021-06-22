@@ -63,51 +63,63 @@ public class MovementServiceIT {
 
     }
 
-//    @Test
-//    @DisplayName("Test transferToAccountBank to TransactionServiceIT ")
-//    public void transferToAccountBankTest() {
-//        //GIVEN
-//        User user1 = new User();
-//        user1.setId(1);
-//        user1.setFirstName("Nicolas");
-//        user1.setLastName("Biancucci");
-//        user1.setEmail("nico@gmail.com");
-//        user1.setPassword("azerty");
-//        user1.setBalance(10000.0);
-//        userRepository.save(user1);
-//        //WHEN
-//        movementService.transferToAccountBank(user1.getEmail(), 2000.0);
-//        //THEN
-//        Assertions.assertEquals(userRepository.findById(user1.getId()).get().getBalance(), 8000.0);
-//    }
+    @Test
+    @DisplayName("Test transferToAccountBank to TransactionServiceIT ")
+    public void transferToAccountBankTest() {
+        //GIVEN
+        User user1 = new User();
+        user1.setId(1);
+        user1.setFirstName("Nicolas");
+        user1.setLastName("Biancucci");
+        user1.setEmail("nico@gmail.com");
+        user1.setPassword("azerty");
+        user1.setBalance(10000.0);
+        userRepository.save(user1);
 
-//    @Test
-//    @DisplayName("Test transfertToApplication to TransactionServiceIT ")
-//    public void transfertToApplicationTest() {
-//        //GIVEN
-//        User user1 = new User();
-//        Account account1 = new Account();
-//        user1.setId(1);
-//        user1.setFirstName("Nicolas");
-//        user1.setLastName("Biancucci");
-//        user1.setEmail("nico@gmail.com");
-//        user1.setPassword("azerty");
-//        user1.setBalance(1000.0);
-//        user1.setAccount(account1);
-//        user1.setContactList(null);
-//
-//        account1.setId(1);
-//        account1.setIban("FR4401234567890123456780000");
-//        account1.setUser(user1);
-//
-//        user1.setAccount(account1);
-//        account1.setUser(user1);
-//
-//        userRepository.save(user1);
-//        accountRepository.save(account1);
-//        //WHEN
-//        movementService.transfertToApplication(user1.getEmail(), 9000.0);
-//        //THEN
-//        Assertions.assertEquals(userRepository.findById(user1.getId()).get().getBalance(), 10000.0);
-//    }
+        Account account1 = new Account();
+        account1.setId(1);
+        account1.setIban("FR4401234567890123456780000");
+        account1.setUser(user1);
+        account1.setBalance(20000.0);
+
+        user1.setAccount(account1);
+        account1.setUser(user1);
+        userRepository.save(user1);
+        accountRepository.save(account1);
+        //WHEN
+        movementService.transferToAccountBank(user1.getEmail(), 2000.0);
+        //THEN
+        Assertions.assertEquals(userRepository.findUsersByEmail(user1.getEmail()).getBalance(), 8000.0);
+        Assertions.assertEquals(accountRepository.findAccountByUserEmail(user1.getEmail()).getBalance(), 22000.0);
+    }
+
+    @Test
+    @DisplayName("Test transfertToApplication to TransactionServiceIT ")
+    public void transfertToApplicationTest() {
+        //GIVEN
+        User user1 = new User();
+        user1.setId(1);
+        user1.setFirstName("Nicolas");
+        user1.setLastName("Biancucci");
+        user1.setEmail("nico@gmail.com");
+        user1.setPassword("azerty");
+        user1.setBalance(10000.0);
+        userRepository.save(user1);
+
+        Account account1 = new Account();
+        account1.setId(1);
+        account1.setIban("FR4401234567890123456780000");
+        account1.setUser(user1);
+        account1.setBalance(20000.0);
+
+        user1.setAccount(account1);
+        account1.setUser(user1);
+        userRepository.save(user1);
+        accountRepository.save(account1);
+        //WHEN
+        movementService.transfertToApplication(user1.getEmail(), 2000.0);
+        //THEN
+        Assertions.assertEquals(userRepository.findUsersByEmail(user1.getEmail()).getBalance(), 12000.0);
+        Assertions.assertEquals(accountRepository.findAccountByUserEmail(user1.getEmail()).getBalance(), 18000.0);
+    }
 }
