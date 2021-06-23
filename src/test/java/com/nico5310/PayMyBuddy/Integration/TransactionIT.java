@@ -32,7 +32,7 @@ public class TransactionIT {
 
     @Test
     @DisplayName("Test findTransactionsOfUserPrincipal to TransactionServiceIT ")
-    public void findTransactionsOfUserPrincipalTest() {
+    public void findTransactionsOfUserPrincipalTestIT() {
         //GIVEN
         User user = new User();
         user.setId(1);
@@ -78,7 +78,7 @@ public class TransactionIT {
 
     @Test
     @DisplayName("Test TransferController to TransactionServiceIT ")
-    public void transferTest() {
+    public void transferTestIT() {
         //GIVEN
         User user1 = new User();
         user1.setId(1);

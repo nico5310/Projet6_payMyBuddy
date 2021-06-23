@@ -94,20 +94,20 @@ public class UserService implements UserDetailsService {
         userRepository.deleteByEmail(email);
     }
 
-
-
-    // contact
-    public List<Contact> findAllContacts() {
-
-        log.info("Get all userContacts");
-        return contactRepository.findAll();
-    }
-
     public List<Contact> findContactByUserEmail(String email) {
 
         log.info("Get userContact by user email");
         return contactRepository.findContactByUserEmail(email);
     }
+
+    // contact
+//    public List<Contact> findAllContacts() {
+//
+//        log.info("Get all userContacts");
+//        return contactRepository.findAll();
+//    }
+
+
 
     public List<Contact> findContactByUserId(Integer id) {
 

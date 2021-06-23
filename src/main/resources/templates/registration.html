@@ -30,18 +30,22 @@
     <hr>
     <h3>Save User</h3>
 
+    <div th:if="${param.error}">
+        <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+    </div>
+
     <form action="#" th:action="@{/save}" th:object = "${user}" method="post">
-        <input type="text" th:field = "*{firstName}"
+        <input type="text" name="firstName" th:field = "*{firstName}"
                placeholder="FirstName"
                class ="form-control mb-4 col-3">
-        <input type="text" th:field = "*{lastName}"
+        <input type="text" name="lastName" th:field = "*{lastName}"
                placeholder="LastName"
                class ="form-control mb-4 col-3">
-        <input type="text" th:field = "*{email}"
+        <input type="Email" name="email" th:field = "*{email}"
                placeholder="email"
                class ="form-control mb-4 col-3">
-        <input type="password" th:field = "*{password}"
-               placeholder="password"
+        <input type="Password" name="password" th:field = "*{password}"
+               placeholder="Password"
                class ="form-control mb-4 col-3">
 
 

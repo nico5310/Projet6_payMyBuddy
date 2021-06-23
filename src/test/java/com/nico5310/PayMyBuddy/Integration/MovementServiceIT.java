@@ -35,7 +35,7 @@ public class MovementServiceIT {
 
     @Test
     @DisplayName("Test findAll to MovementServiceIT ")
-    public void findAllMovementsTest() {
+    public void findAllMovementsTestIT() {
         //GIVEN
         Movement movement = new Movement();
         movement.setId(1);
@@ -50,7 +50,7 @@ public class MovementServiceIT {
 
     @Test
     @DisplayName("Test findMovementById to MovementServiceIT ")
-    public void findMovementByIdTest() {
+    public void findMovementByIdTestIT() {
         //GIVEN
         Movement movement = new Movement();
         movement.setId(1);
@@ -65,7 +65,7 @@ public class MovementServiceIT {
 
     @Test
     @DisplayName("Test transferToAccountBank to TransactionServiceIT ")
-    public void transferToAccountBankTest() {
+    public void transferToAccountBankTestIT() {
         //GIVEN
         User user1 = new User();
         user1.setId(1);
@@ -95,7 +95,7 @@ public class MovementServiceIT {
 
     @Test
     @DisplayName("Test transfertToApplication to TransactionServiceIT ")
-    public void transfertToApplicationTest() {
+    public void transfertToApplicationTestIT() {
         //GIVEN
         User user1 = new User();
         user1.setId(1);

@@ -28,9 +28,7 @@ import java.util.List;
 
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.verify;
@@ -101,117 +99,61 @@ public class MovementServiceTest {
     }
 
     @Test
-    public void testTransferToAccountBank() {
-
-        User user = new User();
-        user.setLastName("Doe");
-        user.setEmail("jane.doe@example.org");
-        user.setPassword("iloveyou");
-        user.setBalance(10.0);
-        user.setAccount(new Account());
-        user.setRole("Role");
+    @DisplayName("Test transfertToApplication to Transaction service")
+    public void transfertToApplicationTest() {
+        //GIVEN
+        User    user    = new User();
+        Account account = new Account();
         user.setId(1);
+        user.setFirstName("Nicolas");
+        user.setLastName("Biancucci");
+        user.setEmail("nico@gmail.com");
+        user.setPassword("azerty");
+        user.setBalance(10000.0);
+        user.setAccount(new Account());
+        user.setRole("USER");
         user.setContactList(new ArrayList<Contact>());
         user.setEnabled(true);
-        user.setFirstName("Jane");
-
-        Account account = new Account();
-        account.setBalance(10.0);
-        account.setUser(user);
         account.setId(1);
-        account.setIban("Iban");
-
-        User user1 = new User();
-        user1.setLastName("Doe");
-        user1.setEmail("jane.doe@example.org");
-        user1.setPassword("iloveyou");
-        user1.setBalance(10.0);
-        user1.setAccount(account);
-        user1.setRole("Role");
-        user1.setId(1);
-        user1.setContactList(new ArrayList<Contact>());
-        user1.setEnabled(true);
-        user1.setFirstName("Jane");
-
-        Account account1 = new Account();
-        account1.setBalance(10.0);
-        account1.setUser(user1);
-        account1.setId(1);
-        account1.setIban("Iban");
-
-        User user2 = new User();
-        user2.setLastName("Doe");
-        user2.setEmail("jane.doe@example.org");
-        user2.setPassword("iloveyou");
-        user2.setBalance(10.0);
-        user2.setAccount(account1);
-        user2.setRole("Role");
-        user2.setId(1);
-        user2.setContactList(new ArrayList<Contact>());
-        user2.setEnabled(true);
-        user2.setFirstName("Jane");
-        when(this.userRepository.save((User) any())).thenThrow(new NoFoundException("An error occurred"));
-        when(this.userRepository.findUsersByEmail(anyString())).thenReturn(user2);
-        assertThrows(NoFoundException.class, () -> this.movementService.transferToAccountBank("jane.doe@example.org", 10.0));
-        verify(this.userRepository).findUsersByEmail(anyString());
-        verify(this.userRepository).save((User) any());
+        account.setIban("FR4401234567890123456780000");
+        account.setBalance(10000.0);
+        account.setUser(user);
+        //WHEN
+        when(userRepository.findUsersByEmail(user.getEmail())).thenReturn(user);
+        when(accountRepository.findAccountByUserEmail(user.getEmail())).thenReturn(account);
+        movementService.transfertToApplication(user.getEmail(), 2000.0);
+        //THEN
+        assertEquals(user.getBalance(), 12000.0);
+        assertEquals(account.getBalance(), 8000.0);
     }
 
     @Test
-    public void testTransferToAccountBank2() {
-
-        User user = new User();
-        user.setLastName("Doe");
-        user.setEmail("jane.doe@example.org");
-        user.setPassword("iloveyou");
-        user.setBalance(10.0);
-        user.setAccount(new Account());
-        user.setRole("Role");
+    @DisplayName("Test transferToAccountBank to Transaction service")
+    public void transferToAccountBankTest() {
+        //GIVEN
+        User    user    = new User();
+        Account account = new Account();
         user.setId(1);
+        user.setFirstName("Nicolas");
+        user.setLastName("Biancucci");
+        user.setEmail("nico@gmail.com");
+        user.setPassword("azerty");
+        user.setBalance(10000.0);
+        user.setAccount(new Account());
+        user.setRole("USER");
         user.setContactList(new ArrayList<Contact>());
         user.setEnabled(true);
-        user.setFirstName("Jane");
-
-        Account account = new Account();
-        account.setBalance(10.0);
-        account.setUser(user);
         account.setId(1);
-        account.setIban("Iban");
-
-        User user1 = new User();
-        user1.setLastName("Doe");
-        user1.setEmail("jane.doe@example.org");
-        user1.setPassword("iloveyou");
-        user1.setBalance(10.0);
-        user1.setAccount(account);
-        user1.setRole("Role");
-        user1.setId(1);
-        user1.setContactList(new ArrayList<Contact>());
-        user1.setEnabled(true);
-        user1.setFirstName("Jane");
-
-        Account account1 = new Account();
-        account1.setBalance(10.0);
-        account1.setUser(user1);
-        account1.setId(1);
-        account1.setIban("Iban");
-
-        User user2 = new User();
-        user2.setLastName("Doe");
-        user2.setEmail("jane.doe@example.org");
-        user2.setPassword("iloveyou");
-        user2.setBalance(10.0);
-        user2.setAccount(account1);
-        user2.setRole("Role");
-        user2.setId(1);
-        user2.setContactList(new ArrayList<Contact>());
-        user2.setEnabled(true);
-        user2.setFirstName("Jane");
-        when(this.userRepository.save((User) any())).thenThrow(new NoFoundException("An error occurred"));
-        when(this.userRepository.findUsersByEmail(anyString())).thenReturn(user2);
-        assertThrows(NoFoundException.class, () -> this.movementService.transferToAccountBank("jane.doe@example.org", 10.0));
-        verify(this.userRepository).findUsersByEmail(anyString());
-        verify(this.userRepository).save((User) any());
+        account.setIban("FR4401234567890123456780000");
+        account.setBalance(10000.0);
+        account.setUser(user);
+        //WHEN
+        when(userRepository.findUsersByEmail(user.getEmail())).thenReturn(user);
+        when(accountRepository.findAccountByUserEmail(user.getEmail())).thenReturn(account);
+        movementService.transferToAccountBank(user.getEmail(), 2000.0);
+        //THEN
+        assertEquals(user.getBalance(), 8000.0);
+        assertEquals(account.getBalance(), 12000.0);
     }
 
 }

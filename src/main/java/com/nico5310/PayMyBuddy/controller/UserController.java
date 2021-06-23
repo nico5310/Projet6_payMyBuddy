@@ -38,12 +38,12 @@ public class UserController {
         userService.updateUser(id, user);
     }
 
-    //REQUEST CONTACT
-    @GetMapping(value = "/contacts", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Contact> findAllContacts() {
-
-        return userService.findAllContacts();
-    }
+//    //REQUEST CONTACT
+//    @GetMapping(value = "/contacts", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public List<Contact> findAllContacts() {
+//
+//        return userService.findAllContacts();
+//    }
 
 
     @GetMapping(value = "/contacts/{email}")

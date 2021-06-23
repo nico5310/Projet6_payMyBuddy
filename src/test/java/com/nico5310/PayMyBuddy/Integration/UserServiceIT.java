@@ -47,14 +47,14 @@ public class UserServiceIT {
 
     @Test
     @DisplayName("Test findById to UserServiceIT")
-    public void findByIdTest(){
+    public void findByIdTestIT(){
         assertNotNull(userRepository.findById(1));
         assertNotNull(userRepository.findById(2));
     }
 
     @Test
     @DisplayName("Test findfindByEmailById to UserServiceIT")
-    public void findByEmailTest(){
+    public void findByEmailTestIT(){
         assertNull(userRepository.findByEmail("nico@gmail.com"));
 
     }
@@ -83,7 +83,7 @@ public class UserServiceIT {
 
     @Test
     @DisplayName("Test updateUser to UserService")
-    void updateUserTest() throws NoCreateUserPossibleException {
+    void updateUserTestIT() throws NoCreateUserPossibleException {
         //GIVEN
         User user = new User();
         user.setId(1);
@@ -113,7 +113,7 @@ public class UserServiceIT {
 
     @Test
     @DisplayName("Test deleteUserByEmail to UserService")
-    void deleteUserByEmailTest() throws NoCreateUserPossibleException {
+    void deleteUserByEmailTestIT() throws NoCreateUserPossibleException {
         //GIVEN
         User user = new User();
         user.setId(1);
@@ -131,27 +131,52 @@ public class UserServiceIT {
         //THEN
         assertFalse(userRepository.findById(1).isPresent());
     }
-//
-//    @Test
-//    @DisplayName("Test deleteUserByEmail to UserService")
-//    void deleteByIdTest() throws NoCreateUserPossibleException {
-//        //GIVEN
-//        User user = new User();
-//        user.setId(1);
-//        user.setFirstName("James");
-//        user.setLastName("Bond");
-//        user.setEmail("james@007.com");
-//        user.setPassword("spectre");
-//        user.setBalance(10000.0);
-//        user.setAccount(null);
-//        user.setContactList(null);
-//        userService.saveUser(user);
-//
-//        //WHEN
-//        userService.deleteById(user.getId());
-//        //THEN
-//        assertFalse(userRepository.findById(1).isPresent());
-//    }
+
+    @Test
+    @DisplayName("Test deleteUserByEmail to UserService")
+    void findContactByUserIdTestIT()throws NoCreateUserPossibleException {
+        //GIVEN
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("James");
+        user.setLastName("Bond");
+        user.setEmail("james@007.com");
+        user.setPassword("spectre");
+        user.setBalance(10000.0);
+        user.setAccount(null);
+        user.setContactList(null);
+        user.setEnabled(true);
+        user.setRole("USER");
+        userService.saveUser(user);
+
+        //WHEN
+        userService.findContactByUserId(user.getId());
+        //THEN
+        assertTrue(userRepository.findById(1).isPresent());
+    }
+
+    @Test
+    @DisplayName("Test deleteUserByEmail to UserService")
+    void deleteContactByIDTestIT()throws NoCreateUserPossibleException {
+        //GIVEN
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("James");
+        user.setLastName("Bond");
+        user.setEmail("james@007.com");
+        user.setPassword("spectre");
+        user.setBalance(10000.0);
+        user.setAccount(null);
+        user.setContactList(null);
+        user.setEnabled(true);
+        user.setRole("USER");
+        userService.saveUser(user);
+
+        //WHEN
+        userService.deleteContactByID(user.getId());
+        //THEN
+        assertTrue(userRepository.findById(1).isPresent());
+    }
 
 
 }

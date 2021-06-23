@@ -1,7 +1,6 @@
 package com.nico5310.PayMyBuddy.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -15,7 +14,7 @@ public class Movement implements Serializable {
 
 
     @Column(name = "amount")
-    private double amountMovement;
+    private Double amountMovement;
 
     @Column(name = "date")
     private LocalDate date;

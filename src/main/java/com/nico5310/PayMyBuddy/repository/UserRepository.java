@@ -14,6 +14,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     void deleteByEmail(String email);
    User findUsersByEmail(String email);
 
+
     void deleteAllById(Integer id);
 
     boolean existsByEmail(String email);

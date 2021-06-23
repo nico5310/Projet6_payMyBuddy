@@ -37,7 +37,7 @@ public class AccountServiceIT {
 
     @Test
     @DisplayName("Test findAllAccounts to AccountService")
-    public void findAllAccountsTest() {
+    public void findAllAccountsTestIT() {
         //GIVEN
         Account account = new Account();
         account.setId(1);
@@ -53,7 +53,7 @@ public class AccountServiceIT {
 
     @Test
     @DisplayName("Test findAccountByEmail to AccountService")
-    public void findAccountByEmailTest() {
+    public void findAccountByEmailTestIT() {
         //GIVEN
         User user = new User();
         user.setEmail("nico@gmail.com");
@@ -72,7 +72,7 @@ public class AccountServiceIT {
 
     @Test
     @DisplayName("Test findAccountById to AccountService")
-    public void findAccountByIdTest() {
+    public void findAccountByIdTestIT() {
         //GIVEN
         Account account = new Account();
         account.setId(1);
@@ -88,7 +88,7 @@ public class AccountServiceIT {
 
     @Test
     @DisplayName("Test saveAccountTest to AccountService")
-    public void saveAccountTest() {
+    public void saveAccountTestIT() {
 
         Account account = new Account();
         account.setIban("FR4401234567890123456780000");
@@ -101,7 +101,7 @@ public class AccountServiceIT {
 
     @Test
     @DisplayName("Test deleteAccountById to AccountService")
-    public void deleteAccountByIdTest() {
+    public void deleteAccountByIdTestIT() {
 
         //GIVEN
         User user = new User();

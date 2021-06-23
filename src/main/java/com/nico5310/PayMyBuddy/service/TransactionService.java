@@ -53,12 +53,15 @@ public class TransactionService {
         LocalDate localDate = LocalDate.now();
 
         if (userRecipient == null) {
+            log.error("User contact unknwon");
             throw new RuntimeException("Impossible to make a TransferController, user is not one of the contacts");
         }
         else if (userSender.getBalance() - ((amountTransaction)+(amountTransaction*0.005)) < 0) {
+            log.error("balance lower for transaction");
             throw new RuntimeException("balance lower for transaction");
         }
         else {
+            log.info("Transfer SUCCESS");
             userSender.setBalance(userSender.getBalance() - ((amountTransaction) + (amountTransaction*0.005)));
             userRepository.save(userSender);
 
