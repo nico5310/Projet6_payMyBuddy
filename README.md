@@ -28,6 +28,7 @@ PayMyBuddy is a project on creating a prototype application for customers to tra
 - MySQL port 3306
 - paymybuddy database for application
 - paymybuddytest database for test
+- 
+![DiagMPD](https://user-images.githubusercontent.com/76699524/123092782-271fa680-d42b-11eb-98ab-eec3f224775a.jpg)
+![Diagclass](https://user-images.githubusercontent.com/76699524/123092797-2be45a80-d42b-11eb-9a38-8ce3f8a0ad77.jpg)
 
-![Diagram class] (src/main/resources/Diagclass.png)
-![Model MPD] (src/main/resources/ModelMPD.png)
