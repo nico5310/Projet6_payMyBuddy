@@ -11,6 +11,7 @@ CREATE TABLE user
     password   VARCHAR(200)       NOT NULL,
     balance    DECIMAL(10, 2)     NOT NULL,
     enabled    BOOLEAN DEFAULT 1,
+    role       VARCHAR(30),
     PRIMARY KEY (id)
 
 )
@@ -20,8 +21,8 @@ CREATE TABLE account
 (
     id      INT AUTO_INCREMENT NOT NULL,
     iban    VARCHAR(34)        NOT NULL UNIQUE,
-    user_id INT                NOT NULL,
     balance INT                NOT NULL,
+    user_id INT                NOT NULL,
     PRIMARY KEY (id)
 
 )
@@ -38,11 +39,11 @@ CREATE TABLE user_contacts
 
 CREATE TABLE movement
 (
-    id             INT AUTO_INCREMENT NOT NULL,
-    amount         DECIMAL(10, 2)     NOT NULL,
-    date           DATETIME           NOT NULL,
-    user_id        INT                NOT NULL,
-    account_id     INT                NOT NULL,
+    id         INT AUTO_INCREMENT NOT NULL,
+    amount     DECIMAL(10, 2)     NOT NULL,
+    date       DATETIME           NOT NULL,
+    user_id    INT                NOT NULL,
+    account_id INT                NOT NULL,
     PRIMARY KEY (id)
 )
     ENGINE = InnoDB;
