@@ -1,17 +1,19 @@
-INSERT INTO user(first_name, last_name, email, password, balance)
+INSERT INTO user(first_name, last_name, email, password, balance, enabled, role)
 VALUES
 /* code Nicolas: 1234 */
-('Nicolas','Biancucci','nico@gmail.com','$2a$10$AcVsgu8Y3GZa2yvuAMl.uuD9yAiHpzQ9nX3hy1mSAjeYrTYzK5Y7.' ,1000.0),
+('Nicolas','Biancucci','nico@gmail.com','$2a$10$AcVsgu8Y3GZa2yvuAMl.uuD9yAiHpzQ9nX3hy1mSAjeYrTYzK5Y7.' ,1000.0, 1,
+ 'USER'),
 /* code James: 007 */
-('James', 'Bond', 'james@007.com', '$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG', 1000.0),
+('James', 'Bond', 'james@007.com', '$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG', 1000.0, 1, 'USER'),
 /* code Anthony: 1970 */
-('Tony', 'Stark', 'ironman@marvel.com','$2a$10$zjssHnw1qbbC1U5JUlpYtO8GeQNRvQiE2cBMKJp7uXUmEQt4INlci', 10000000.0 );
+('Tony', 'Stark', 'ironman@marvel.com','$2a$10$t2xejEqSAkqoEl06PJDGsuCJcO2r53gImrpYyoNZ9I8IXNlrcHmNm', 10000000.0, 1,
+ 'USER');
 
 INSERT INTO account (iban, balance,  user_id)
 VALUES
 ('FR4401234567890123456780000', 10000.0, 1),
 ('FR4401234567890123456780002', 10000.0, 2),
-('FR4401234567890123456780004', 10000000, 3);
+('FR4401234567890123456780004', 10000000.0, 3);
 
 INSERT INTO user_contacts (user_contact_id, user_id)
 VALUES
