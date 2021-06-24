@@ -1,49 +1,262 @@
-[WARN ] 2021-06-23 11:33:44.094 [background-preinit] Jackson2ObjectMapperBuilder (127) - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
-[INFO ] 2021-06-23 11:33:44.642 [main] RepositoryConfigurationDelegate (262) - Multiple Spring Data modules found, entering strict repository configuration mode!
-[INFO ] 2021-06-23 11:33:44.642 [main] RepositoryConfigurationDelegate (132) - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-[INFO ] 2021-06-23 11:33:44.664 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.AccountRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-[INFO ] 2021-06-23 11:33:44.664 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.ContactRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-[INFO ] 2021-06-23 11:33:44.664 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.MovementRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-[INFO ] 2021-06-23 11:33:44.664 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.TransactionRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-[INFO ] 2021-06-23 11:33:44.664 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-[INFO ] 2021-06-23 11:33:44.664 [main] RepositoryConfigurationDelegate (201) - Finished Spring Data repository scanning in 19 ms. Found 0 JDBC repository interfaces.
-[INFO ] 2021-06-23 11:33:44.664 [main] RepositoryConfigurationDelegate (262) - Multiple Spring Data modules found, entering strict repository configuration mode!
-[INFO ] 2021-06-23 11:33:44.664 [main] RepositoryConfigurationDelegate (132) - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2021-06-23 11:33:44.696 [main] RepositoryConfigurationDelegate (201) - Finished Spring Data repository scanning in 21 ms. Found 5 JPA repository interfaces.
-[INFO ] 2021-06-23 11:33:44.881 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7573b9ee' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.896 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.912 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'management.metrics-org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.912 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.data.RepositoryMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.data.RepositoryMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.912 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.912 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'management.metrics.export.simple-org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.912 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'simpleConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimplePropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.912 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.912 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.928 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'simpleMeterRegistry' of type [io.micrometer.core.instrument.simple.SimpleMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.928 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'repositoryTagsProvider' of type [org.springframework.boot.actuate.metrics.data.DefaultRepositoryTagsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:44.928 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'metricsRepositoryMethodInvocationListener' of type [org.springframework.boot.actuate.metrics.data.MetricsRepositoryMethodInvocationListener] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[INFO ] 2021-06-23 11:33:45.066 [main] TomcatWebServer (108) - Tomcat initialized with port(s): 8080 (http)
-[INFO ] 2021-06-23 11:33:45.066 [main] Http11NioProtocol (173) - Initializing ProtocolHandler ["http-nio-8080"]
-[INFO ] 2021-06-23 11:33:45.066 [main] StandardService (173) - Starting service [Tomcat]
-[INFO ] 2021-06-23 11:33:45.066 [main] StandardEngine (173) - Starting Servlet engine: [Apache Tomcat/9.0.46]
-[INFO ] 2021-06-23 11:33:45.160 [main] [/] (173) - Initializing Spring embedded WebApplicationContext
-[INFO ] 2021-06-23 11:33:45.160 [main] ServletWebServerApplicationContext (290) - Root WebApplicationContext: initialization completed in 1082 ms
-[INFO ] 2021-06-23 11:33:45.282 [main] LogHelper (31) - HHH000204: Processing PersistenceUnitInfo [name: default]
-[INFO ] 2021-06-23 11:33:45.313 [main] Version (44) - HHH000412: Hibernate ORM core version 5.4.31.Final
-[INFO ] 2021-06-23 11:33:45.398 [main] Version (56) - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[INFO ] 2021-06-23 11:33:45.461 [main] HikariDataSource (110) - HikariPool-1 - Starting...
-[INFO ] 2021-06-23 11:33:45.530 [main] HikariDataSource (123) - HikariPool-1 - Start completed.
-[INFO ] 2021-06-23 11:33:45.545 [main] Dialect (175) - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-[INFO ] 2021-06-23 11:33:46.047 [main] JtaPlatformInitiator (52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[INFO ] 2021-06-23 11:33:46.062 [main] LocalContainerEntityManagerFactoryBean (437) - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[WARN ] 2021-06-23 11:33:46.417 [main] JpaBaseConfiguration$JpaWebConfiguration (219) - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[INFO ] 2021-06-23 11:33:46.564 [main] DefaultSecurityFilterChain (51) - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@70b0dc92, org.springframework.security.web.context.SecurityContextPersistenceFilter@22a2e581, org.springframework.security.web.header.HeaderWriterFilter@5cd6a827, org.springframework.security.web.csrf.CsrfFilter@574413bd, org.springframework.security.web.authentication.logout.LogoutFilter@7c31e01f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@757f47f0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2dc319cf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30a1b2ad, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@309d54ac, org.springframework.security.web.session.SessionManagementFilter@7674f9d4, org.springframework.security.web.access.ExceptionTranslationFilter@1ec09a68, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@12c30824]
-[INFO ] 2021-06-23 11:33:46.687 [main] WelcomePageHandlerMapping (57) - Adding welcome page template: index
-[INFO ] 2021-06-23 11:33:46.950 [main] EndpointLinksResolver (58) - Exposing 1 endpoint(s) beneath base path '/actuator'
-[INFO ] 2021-06-23 11:33:46.988 [main] Http11NioProtocol (173) - Starting ProtocolHandler ["http-nio-8080"]
-[INFO ] 2021-06-23 11:33:46.988 [main] TomcatWebServer (220) - Tomcat started on port(s): 8080 (http) with context path ''
-[INFO ] 2021-06-23 11:33:47.003 [main] ApplicationAvailabilityBean (75) - Application availability state LivenessState changed to CORRECT
-[INFO ] 2021-06-23 11:33:47.003 [main] ApplicationAvailabilityBean (75) - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
-[INFO ] 2021-06-23 11:33:47.620 [RMI TCP Connection(1)-192.168.1.1] [/] (173) - Initializing Spring DispatcherServlet 'dispatcherServlet'
-[INFO ] 2021-06-23 11:33:47.620 [RMI TCP Connection(1)-192.168.1.1] DispatcherServlet (525) - Initializing Servlet 'dispatcherServlet'
-[INFO ] 2021-06-23 11:33:47.620 [RMI TCP Connection(1)-192.168.1.1] DispatcherServlet (547) - Completed initialization in 0 ms
+[WARN ] 2021-06-24 09:39:10.605 [background-preinit] Jackson2ObjectMapperBuilder (127) - For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+[INFO ] 2021-06-24 09:39:11.201 [main] RepositoryConfigurationDelegate (262) - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 2021-06-24 09:39:11.201 [main] RepositoryConfigurationDelegate (132) - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+[INFO ] 2021-06-24 09:39:11.221 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.AccountRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+[INFO ] 2021-06-24 09:39:11.221 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.ContactRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+[INFO ] 2021-06-24 09:39:11.225 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.MovementRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+[INFO ] 2021-06-24 09:39:11.225 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.TransactionRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+[INFO ] 2021-06-24 09:39:11.225 [main] RepositoryConfigurationExtensionSupport (349) - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.nico5310.PayMyBuddy.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+[INFO ] 2021-06-24 09:39:11.225 [main] RepositoryConfigurationDelegate (201) - Finished Spring Data repository scanning in 20 ms. Found 0 JDBC repository interfaces.
+[INFO ] 2021-06-24 09:39:11.233 [main] RepositoryConfigurationDelegate (262) - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 2021-06-24 09:39:11.233 [main] RepositoryConfigurationDelegate (132) - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2021-06-24 09:39:11.257 [main] RepositoryConfigurationDelegate (201) - Finished Spring Data repository scanning in 21 ms. Found 5 JPA repository interfaces.
+[INFO ] 2021-06-24 09:39:11.469 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5ba90d8a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.473 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.489 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'management.metrics-org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.489 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.data.RepositoryMetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.data.RepositoryMetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.489 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.493 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'management.metrics.export.simple-org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleProperties' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.493 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'simpleConfig' of type [org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimplePropertiesConfigAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.497 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration' of type [org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.497 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'micrometerClock' of type [io.micrometer.core.instrument.Clock$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.505 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'simpleMeterRegistry' of type [io.micrometer.core.instrument.simple.SimpleMeterRegistry] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.509 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'repositoryTagsProvider' of type [org.springframework.boot.actuate.metrics.data.DefaultRepositoryTagsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.509 [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker (376) - Bean 'metricsRepositoryMethodInvocationListener' of type [org.springframework.boot.actuate.metrics.data.MetricsRepositoryMethodInvocationListener] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2021-06-24 09:39:11.641 [main] TomcatWebServer (108) - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2021-06-24 09:39:11.645 [main] Http11NioProtocol (173) - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2021-06-24 09:39:11.645 [main] StandardService (173) - Starting service [Tomcat]
+[INFO ] 2021-06-24 09:39:11.645 [main] StandardEngine (173) - Starting Servlet engine: [Apache Tomcat/9.0.46]
+[INFO ] 2021-06-24 09:39:11.729 [main] [/] (173) - Initializing Spring embedded WebApplicationContext
+[INFO ] 2021-06-24 09:39:11.729 [main] ServletWebServerApplicationContext (290) - Root WebApplicationContext: initialization completed in 1148 ms
+[INFO ] 2021-06-24 09:39:11.841 [main] LogHelper (31) - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2021-06-24 09:39:11.869 [main] Version (44) - HHH000412: Hibernate ORM core version 5.4.31.Final
+[INFO ] 2021-06-24 09:39:11.937 [main] Version (56) - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[INFO ] 2021-06-24 09:39:12.005 [main] HikariDataSource (110) - HikariPool-1 - Starting...
+[INFO ] 2021-06-24 09:39:12.087 [main] HikariDataSource (123) - HikariPool-1 - Start completed.
+[INFO ] 2021-06-24 09:39:12.095 [main] Dialect (175) - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[INFO ] 2021-06-24 09:39:12.593 [main] JtaPlatformInitiator (52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2021-06-24 09:39:12.597 [main] LocalContainerEntityManagerFactoryBean (437) - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN ] 2021-06-24 09:39:13.005 [main] JpaBaseConfiguration$JpaWebConfiguration (219) - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[DEBUG] 2021-06-24 09:39:13.145 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for ExactUrl [processUrl='/login?error']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for ExactUrl [processUrl='/login']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for ExactUrl [processUrl='/login']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for Ant [pattern='/logout', POST]
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for ExactUrl [processUrl='/login?logout']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for Ant [pattern='/public']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for Ant [pattern='/private/']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for Ant [pattern='/newUser']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for Ant [pattern='/save']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for Ant [pattern='/registration']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [permitAll] for Ant [pattern='/']
+[DEBUG] 2021-06-24 09:39:13.149 [main] ExpressionBasedFilterInvocationSecurityMetadataSource (72) - Adding web access control expression [authenticated] for any request
+[INFO ] 2021-06-24 09:39:13.161 [main] DefaultSecurityFilterChain (51) - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@15ca7322, org.springframework.security.web.context.SecurityContextPersistenceFilter@30a1b2ad, org.springframework.security.web.header.HeaderWriterFilter@5418893c, org.springframework.security.web.csrf.CsrfFilter@1d0fc0bc, org.springframework.security.web.authentication.logout.LogoutFilter@61d9dd15, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@71c1ca1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4144d4a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@49faf815, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4c89c98a, org.springframework.security.web.session.SessionManagementFilter@22bca04e, org.springframework.security.web.access.ExceptionTranslationFilter@34d26a68, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@29a1dab3]
+[DEBUG] 2021-06-24 09:39:13.265 [main] RequestMappingHandlerAdapter (625) - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[DEBUG] 2021-06-24 09:39:13.309 [main] RequestMappingHandlerMapping (361) - 26 mappings in 'requestMappingHandlerMapping'
+[INFO ] 2021-06-24 09:39:13.329 [main] WelcomePageHandlerMapping (57) - Adding welcome page template: index
+[DEBUG] 2021-06-24 09:39:13.373 [main] SimpleUrlHandlerMapping (188) - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+[DEBUG] 2021-06-24 09:39:13.393 [main] ExceptionHandlerExceptionResolver (307) - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[INFO ] 2021-06-24 09:39:13.679 [main] EndpointLinksResolver (58) - Exposing 3 endpoint(s) beneath base path '/actuator'
+[INFO ] 2021-06-24 09:39:13.707 [main] Http11NioProtocol (173) - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2021-06-24 09:39:13.723 [main] TomcatWebServer (220) - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2021-06-24 09:39:13.735 [main] ApplicationAvailabilityBean (75) - Application availability state LivenessState changed to CORRECT
+[INFO ] 2021-06-24 09:39:13.739 [main] ApplicationAvailabilityBean (75) - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+[INFO ] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] [/] (173) - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] DispatcherServlet (525) - Initializing Servlet 'dispatcherServlet'
+[DEBUG] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] DispatcherServlet (520) - Detected StandardServletMultipartResolver
+[DEBUG] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] DispatcherServlet (544) - Detected AcceptHeaderLocaleResolver
+[DEBUG] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] DispatcherServlet (569) - Detected FixedThemeResolver
+[DEBUG] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] DispatcherServlet (719) - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@67b2c8bb
+[DEBUG] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] DispatcherServlet (783) - Detected org.springframework.web.servlet.support.SessionFlashMapManager@b0e6d4e
+[DEBUG] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] DispatcherServlet (542) - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[INFO ] 2021-06-24 09:39:14.395 [RMI TCP Connection(5)-192.168.1.1] DispatcherServlet (547) - Completed initialization in 0 ms
+[DEBUG] 2021-06-24 09:39:18.143 [http-nio-8080-exec-1] FilterChainProxy (208) - Securing GET /
+[DEBUG] 2021-06-24 09:39:18.147 [http-nio-8080-exec-1] SecurityContextPersistenceFilter (102) - Set SecurityContextHolder to empty SecurityContext
+[DEBUG] 2021-06-24 09:39:18.149 [http-nio-8080-exec-1] AnonymousAuthenticationFilter (96) - Set SecurityContextHolder to anonymous SecurityContext
+[DEBUG] 2021-06-24 09:39:18.154 [http-nio-8080-exec-1] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:39:18.154 [http-nio-8080-exec-1] FilterChainProxy (323) - Secured GET /
+[DEBUG] 2021-06-24 09:39:18.155 [http-nio-8080-exec-1] DispatcherServlet (91) - GET "/", parameters={}
+[DEBUG] 2021-06-24 09:39:18.166 [http-nio-8080-exec-1] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[WARN ] 2021-06-24 09:39:18.647 [http-nio-8080-exec-1] SessionIdGeneratorBase (173) - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [304] milliseconds.
+[DEBUG] 2021-06-24 09:39:18.655 [http-nio-8080-exec-1] HttpSessionSecurityContextRepository (346) - Did not store anonymous SecurityContext
+[DEBUG] 2021-06-24 09:39:18.655 [http-nio-8080-exec-1] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:39:18.659 [http-nio-8080-exec-1] HttpSessionSecurityContextRepository (346) - Did not store anonymous SecurityContext
+[DEBUG] 2021-06-24 09:39:18.659 [http-nio-8080-exec-1] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:18.771 [http-nio-8080-exec-2] FilterChainProxy (208) - Securing GET /favicon.ico
+[DEBUG] 2021-06-24 09:39:18.773 [http-nio-8080-exec-2] SecurityContextPersistenceFilter (102) - Set SecurityContextHolder to empty SecurityContext
+[DEBUG] 2021-06-24 09:39:18.773 [http-nio-8080-exec-2] AnonymousAuthenticationFilter (96) - Set SecurityContextHolder to anonymous SecurityContext
+[DEBUG] 2021-06-24 09:39:18.773 [http-nio-8080-exec-2] FilterSecurityInterceptor (246) - Failed to authorize filter invocation [GET /favicon.ico] with attributes [authenticated]
+[DEBUG] 2021-06-24 09:39:18.775 [http-nio-8080-exec-2] DefaultRedirectStrategy (57) - Redirecting to http://localhost:8080/login
+[DEBUG] 2021-06-24 09:39:18.775 [http-nio-8080-exec-2] HttpSessionSecurityContextRepository (343) - Did not store empty SecurityContext
+[DEBUG] 2021-06-24 09:39:18.775 [http-nio-8080-exec-2] HttpSessionSecurityContextRepository (343) - Did not store empty SecurityContext
+[DEBUG] 2021-06-24 09:39:18.775 [http-nio-8080-exec-2] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:18.805 [http-nio-8080-exec-4] FilterChainProxy (208) - Securing GET /login
+[DEBUG] 2021-06-24 09:39:18.805 [http-nio-8080-exec-4] SecurityContextPersistenceFilter (102) - Set SecurityContextHolder to empty SecurityContext
+[DEBUG] 2021-06-24 09:39:18.806 [http-nio-8080-exec-4] AnonymousAuthenticationFilter (96) - Set SecurityContextHolder to anonymous SecurityContext
+[DEBUG] 2021-06-24 09:39:18.806 [http-nio-8080-exec-4] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /login] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:39:18.806 [http-nio-8080-exec-4] FilterChainProxy (323) - Secured GET /login
+[DEBUG] 2021-06-24 09:39:18.806 [http-nio-8080-exec-4] DispatcherServlet (91) - GET "/login", parameters={}
+[DEBUG] 2021-06-24 09:39:18.806 [http-nio-8080-exec-4] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#login(Model)
+[DEBUG] 2021-06-24 09:39:18.818 [http-nio-8080-exec-4] ContentNegotiatingViewResolver (349) - Selected '*/*' given [image/webp, */*]
+[DEBUG] 2021-06-24 09:39:18.818 [http-nio-8080-exec-4] HttpSessionSecurityContextRepository (346) - Did not store anonymous SecurityContext
+[DEBUG] 2021-06-24 09:39:18.818 [http-nio-8080-exec-4] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:39:18.818 [http-nio-8080-exec-4] HttpSessionSecurityContextRepository (346) - Did not store anonymous SecurityContext
+[DEBUG] 2021-06-24 09:39:18.818 [http-nio-8080-exec-4] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:25.602 [http-nio-8080-exec-3] FilterChainProxy (208) - Securing POST /login
+[DEBUG] 2021-06-24 09:39:25.602 [http-nio-8080-exec-3] SecurityContextPersistenceFilter (102) - Set SecurityContextHolder to empty SecurityContext
+[DEBUG] 2021-06-24 09:39:25.879 [http-nio-8080-exec-3] DaoAuthenticationProvider (199) - Authenticated user
+[DEBUG] 2021-06-24 09:39:25.879 [http-nio-8080-exec-3] ChangeSessionIdAuthenticationStrategy (99) - Changed session id from 8F0A10B4A94A0789DEC74D482BCEBE6B
+[DEBUG] 2021-06-24 09:39:25.879 [http-nio-8080-exec-3] CsrfAuthenticationStrategy (63) - Replaced CSRF Token
+[DEBUG] 2021-06-24 09:39:25.887 [http-nio-8080-exec-3] DefaultRedirectStrategy (57) - Redirecting to /homepage
+[DEBUG] 2021-06-24 09:39:25.891 [http-nio-8080-exec-3] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:25.899 [http-nio-8080-exec-5] FilterChainProxy (208) - Securing GET /homepage
+[DEBUG] 2021-06-24 09:39:25.899 [http-nio-8080-exec-5] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /homepage] with attributes [authenticated]
+[DEBUG] 2021-06-24 09:39:25.899 [http-nio-8080-exec-5] FilterChainProxy (323) - Secured GET /homepage
+[DEBUG] 2021-06-24 09:39:25.899 [http-nio-8080-exec-5] DispatcherServlet (91) - GET "/homepage", parameters={}
+[DEBUG] 2021-06-24 09:39:25.899 [http-nio-8080-exec-5] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.HomepageController#homePage(User, Model)
+[DEBUG] 2021-06-24 09:39:25.923 [http-nio-8080-exec-5] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:39:25.932 [http-nio-8080-exec-5] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:39:25.932 [http-nio-8080-exec-5] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:26.028 [http-nio-8080-exec-6] FilterChainProxy (208) - Securing GET /login
+[DEBUG] 2021-06-24 09:39:26.032 [http-nio-8080-exec-6] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /login] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:39:26.032 [http-nio-8080-exec-6] FilterChainProxy (323) - Secured GET /login
+[DEBUG] 2021-06-24 09:39:26.032 [http-nio-8080-exec-6] DispatcherServlet (91) - GET "/login", parameters={}
+[DEBUG] 2021-06-24 09:39:26.032 [http-nio-8080-exec-6] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#login(Model)
+[DEBUG] 2021-06-24 09:39:26.032 [http-nio-8080-exec-6] ContentNegotiatingViewResolver (349) - Selected '*/*' given [image/webp, */*]
+[DEBUG] 2021-06-24 09:39:26.032 [http-nio-8080-exec-6] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:39:26.032 [http-nio-8080-exec-6] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:45.576 [http-nio-8080-exec-9] FilterChainProxy (208) - Securing GET /login
+[DEBUG] 2021-06-24 09:39:45.580 [http-nio-8080-exec-9] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /login] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:39:45.580 [http-nio-8080-exec-9] FilterChainProxy (323) - Secured GET /login
+[DEBUG] 2021-06-24 09:39:45.580 [http-nio-8080-exec-9] DispatcherServlet (91) - GET "/login", parameters={}
+[DEBUG] 2021-06-24 09:39:45.580 [http-nio-8080-exec-9] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#login(Model)
+[DEBUG] 2021-06-24 09:39:45.580 [http-nio-8080-exec-9] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:39:45.580 [http-nio-8080-exec-9] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:39:45.580 [http-nio-8080-exec-9] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:49.170 [http-nio-8080-exec-8] FilterChainProxy (208) - Securing POST /login
+[DEBUG] 2021-06-24 09:39:49.246 [http-nio-8080-exec-8] DaoAuthenticationProvider (199) - Authenticated user
+[DEBUG] 2021-06-24 09:39:49.246 [http-nio-8080-exec-8] ChangeSessionIdAuthenticationStrategy (99) - Changed session id from 67CD67F0EEF31C76667808764F8745C9
+[DEBUG] 2021-06-24 09:39:49.247 [http-nio-8080-exec-8] CsrfAuthenticationStrategy (63) - Replaced CSRF Token
+[DEBUG] 2021-06-24 09:39:49.247 [http-nio-8080-exec-8] UsernamePasswordAuthenticationFilter (315) - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]
+[DEBUG] 2021-06-24 09:39:49.247 [http-nio-8080-exec-8] DefaultRedirectStrategy (57) - Redirecting to /homepage
+[DEBUG] 2021-06-24 09:39:49.247 [http-nio-8080-exec-8] HttpSessionSecurityContextRepository (361) - Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]] to HttpSession [org.apache.catalina.session.StandardSessionFacade@7b709b1]
+[DEBUG] 2021-06-24 09:39:49.247 [http-nio-8080-exec-8] HttpSessionSecurityContextRepository (361) - Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]] to HttpSession [org.apache.catalina.session.StandardSessionFacade@7b709b1]
+[DEBUG] 2021-06-24 09:39:49.247 [http-nio-8080-exec-8] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:49.252 [http-nio-8080-exec-7] FilterChainProxy (208) - Securing GET /homepage
+[DEBUG] 2021-06-24 09:39:49.252 [http-nio-8080-exec-7] HttpSessionSecurityContextRepository (184) - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:39:49.252 [http-nio-8080-exec-7] SecurityContextPersistenceFilter (107) - Set SecurityContextHolder to SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:39:49.253 [http-nio-8080-exec-7] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /homepage] with attributes [authenticated]
+[DEBUG] 2021-06-24 09:39:49.253 [http-nio-8080-exec-7] FilterChainProxy (323) - Secured GET /homepage
+[DEBUG] 2021-06-24 09:39:49.253 [http-nio-8080-exec-7] DispatcherServlet (91) - GET "/homepage", parameters={}
+[DEBUG] 2021-06-24 09:39:49.253 [http-nio-8080-exec-7] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.HomepageController#homePage(User, Model)
+[DEBUG] 2021-06-24 09:39:49.260 [http-nio-8080-exec-7] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:39:49.262 [http-nio-8080-exec-7] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:39:49.262 [http-nio-8080-exec-7] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:39:49.357 [http-nio-8080-exec-10] FilterChainProxy (208) - Securing GET /login
+[DEBUG] 2021-06-24 09:39:49.358 [http-nio-8080-exec-10] HttpSessionSecurityContextRepository (184) - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:39:49.358 [http-nio-8080-exec-10] SecurityContextPersistenceFilter (107) - Set SecurityContextHolder to SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:39:49.358 [http-nio-8080-exec-10] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /login] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:39:49.358 [http-nio-8080-exec-10] FilterChainProxy (323) - Secured GET /login
+[DEBUG] 2021-06-24 09:39:49.358 [http-nio-8080-exec-10] DispatcherServlet (91) - GET "/login", parameters={}
+[DEBUG] 2021-06-24 09:39:49.359 [http-nio-8080-exec-10] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#login(Model)
+[DEBUG] 2021-06-24 09:39:49.359 [http-nio-8080-exec-10] ContentNegotiatingViewResolver (349) - Selected '*/*' given [image/webp, */*]
+[DEBUG] 2021-06-24 09:39:49.360 [http-nio-8080-exec-10] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:39:49.360 [http-nio-8080-exec-10] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] FilterChainProxy (208) - Securing GET /login
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] HttpSessionSecurityContextRepository (184) - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] SecurityContextPersistenceFilter (107) - Set SecurityContextHolder to SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /login] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] FilterChainProxy (323) - Secured GET /login
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] DispatcherServlet (91) - GET "/login", parameters={}
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#login(Model)
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:42:20.896 [http-nio-8080-exec-2] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:42:22.785 [http-nio-8080-exec-4] FilterChainProxy (208) - Securing GET /registration
+[DEBUG] 2021-06-24 09:42:22.785 [http-nio-8080-exec-4] HttpSessionSecurityContextRepository (184) - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:42:22.785 [http-nio-8080-exec-4] SecurityContextPersistenceFilter (107) - Set SecurityContextHolder to SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:42:22.785 [http-nio-8080-exec-4] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /registration] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:42:22.785 [http-nio-8080-exec-4] FilterChainProxy (323) - Secured GET /registration
+[DEBUG] 2021-06-24 09:42:22.785 [http-nio-8080-exec-4] DispatcherServlet (91) - GET "/registration", parameters={}
+[DEBUG] 2021-06-24 09:42:22.785 [http-nio-8080-exec-4] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#addUser(Model)
+[DEBUG] 2021-06-24 09:42:22.785 [http-nio-8080-exec-4] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:42:22.799 [http-nio-8080-exec-4] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:42:22.799 [http-nio-8080-exec-4] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:43:13.541 [http-nio-8080-exec-3] FilterChainProxy (208) - Securing POST /save
+[DEBUG] 2021-06-24 09:43:13.541 [http-nio-8080-exec-3] HttpSessionSecurityContextRepository (184) - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:43:13.541 [http-nio-8080-exec-3] SecurityContextPersistenceFilter (107) - Set SecurityContextHolder to SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:43:13.541 [http-nio-8080-exec-3] FilterSecurityInterceptor (210) - Authorized filter invocation [POST /save] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:43:13.541 [http-nio-8080-exec-3] FilterChainProxy (323) - Secured POST /save
+[DEBUG] 2021-06-24 09:43:13.541 [http-nio-8080-exec-3] DispatcherServlet (91) - POST "/save", parameters={masked}
+[DEBUG] 2021-06-24 09:43:13.541 [http-nio-8080-exec-3] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#addUser(User, Model)
+[DEBUG] 2021-06-24 09:43:13.646 [http-nio-8080-exec-3] RedirectView (309) - View name 'redirect:', model {}
+[DEBUG] 2021-06-24 09:43:13.647 [http-nio-8080-exec-3] DispatcherServlet (1131) - Completed 302 FOUND
+[DEBUG] 2021-06-24 09:43:13.647 [http-nio-8080-exec-3] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:43:13.657 [http-nio-8080-exec-5] FilterChainProxy (208) - Securing GET /login
+[DEBUG] 2021-06-24 09:43:13.658 [http-nio-8080-exec-5] HttpSessionSecurityContextRepository (184) - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:43:13.658 [http-nio-8080-exec-5] SecurityContextPersistenceFilter (107) - Set SecurityContextHolder to SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:43:13.658 [http-nio-8080-exec-5] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /login] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:43:13.658 [http-nio-8080-exec-5] FilterChainProxy (323) - Secured GET /login
+[DEBUG] 2021-06-24 09:43:13.658 [http-nio-8080-exec-5] DispatcherServlet (91) - GET "/login", parameters={}
+[DEBUG] 2021-06-24 09:43:13.658 [http-nio-8080-exec-5] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#login(Model)
+[DEBUG] 2021-06-24 09:43:13.659 [http-nio-8080-exec-5] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:43:13.660 [http-nio-8080-exec-5] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:43:13.660 [http-nio-8080-exec-5] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:55:21.161 [http-nio-8080-exec-8] FilterChainProxy (208) - Securing POST /login
+[DEBUG] 2021-06-24 09:55:21.161 [http-nio-8080-exec-8] HttpSessionSecurityContextRepository (184) - Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:55:21.161 [http-nio-8080-exec-8] SecurityContextPersistenceFilter (107) - Set SecurityContextHolder to SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=User [id=2, firstName=James, lastName=Bond, email=james@007.com, password=$2a$10$K2dvPQzV66h4G6JGLgI9a.7TuXsUj1OqXsfTEZnxtS9vLZrz3DNYG, balance=1400.0, account =null, contact=[], enabled=true, role='USER'], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=67CD67F0EEF31C76667808764F8745C9], Granted Authorities=[]]]
+[DEBUG] 2021-06-24 09:55:21.234 [http-nio-8080-exec-8] DaoAuthenticationProvider (199) - Authenticated user
+[DEBUG] 2021-06-24 09:55:21.234 [http-nio-8080-exec-8] ChangeSessionIdAuthenticationStrategy (99) - Changed session id from 2FC5A2FD1213A0B2159513650C3CB1CD
+[DEBUG] 2021-06-24 09:55:21.234 [http-nio-8080-exec-8] CsrfAuthenticationStrategy (63) - Replaced CSRF Token
+[DEBUG] 2021-06-24 09:55:21.234 [http-nio-8080-exec-8] DefaultRedirectStrategy (57) - Redirecting to /homepage
+[DEBUG] 2021-06-24 09:55:21.234 [http-nio-8080-exec-8] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:55:21.248 [http-nio-8080-exec-7] FilterChainProxy (208) - Securing GET /homepage
+[DEBUG] 2021-06-24 09:55:21.249 [http-nio-8080-exec-7] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /homepage] with attributes [authenticated]
+[DEBUG] 2021-06-24 09:55:21.249 [http-nio-8080-exec-7] FilterChainProxy (323) - Secured GET /homepage
+[DEBUG] 2021-06-24 09:55:21.249 [http-nio-8080-exec-7] DispatcherServlet (91) - GET "/homepage", parameters={}
+[DEBUG] 2021-06-24 09:55:21.250 [http-nio-8080-exec-7] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.HomepageController#homePage(User, Model)
+[DEBUG] 2021-06-24 09:55:21.256 [http-nio-8080-exec-7] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:55:21.258 [http-nio-8080-exec-7] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:55:21.258 [http-nio-8080-exec-7] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:55:21.400 [http-nio-8080-exec-10] FilterChainProxy (208) - Securing GET /login
+[DEBUG] 2021-06-24 09:55:21.400 [http-nio-8080-exec-10] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /login] with attributes [permitAll]
+[DEBUG] 2021-06-24 09:55:21.400 [http-nio-8080-exec-10] FilterChainProxy (323) - Secured GET /login
+[DEBUG] 2021-06-24 09:55:21.400 [http-nio-8080-exec-10] DispatcherServlet (91) - GET "/login", parameters={}
+[DEBUG] 2021-06-24 09:55:21.400 [http-nio-8080-exec-10] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.RegistrationController#login(Model)
+[DEBUG] 2021-06-24 09:55:21.402 [http-nio-8080-exec-10] ContentNegotiatingViewResolver (349) - Selected '*/*' given [image/webp, */*]
+[DEBUG] 2021-06-24 09:55:21.403 [http-nio-8080-exec-10] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:55:21.403 [http-nio-8080-exec-10] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:55:23.002 [http-nio-8080-exec-1] FilterChainProxy (208) - Securing GET /profile
+[DEBUG] 2021-06-24 09:55:23.003 [http-nio-8080-exec-1] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /profile] with attributes [authenticated]
+[DEBUG] 2021-06-24 09:55:23.003 [http-nio-8080-exec-1] FilterChainProxy (323) - Secured GET /profile
+[DEBUG] 2021-06-24 09:55:23.003 [http-nio-8080-exec-1] DispatcherServlet (91) - GET "/profile", parameters={}
+[DEBUG] 2021-06-24 09:55:23.003 [http-nio-8080-exec-1] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.HomepageController#getProfile(User, Model)
+[DEBUG] 2021-06-24 09:55:23.019 [http-nio-8080-exec-1] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:55:23.029 [http-nio-8080-exec-1] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:55:23.029 [http-nio-8080-exec-1] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:55:27.188 [http-nio-8080-exec-2] FilterChainProxy (208) - Securing GET /movement/transferToApplication?accounts=2&amount=100
+[DEBUG] 2021-06-24 09:55:27.188 [http-nio-8080-exec-2] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /movement/transferToApplication?accounts=2&amount=100] with attributes [authenticated]
+[DEBUG] 2021-06-24 09:55:27.188 [http-nio-8080-exec-2] FilterChainProxy (323) - Secured GET /movement/transferToApplication?accounts=2&amount=100
+[DEBUG] 2021-06-24 09:55:27.188 [http-nio-8080-exec-2] DispatcherServlet (91) - GET "/movement/transferToApplication?accounts=2&amount=100", parameters={masked}
+[DEBUG] 2021-06-24 09:55:27.188 [http-nio-8080-exec-2] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.MovementController#transferToApplication(User, Double)
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-2] RedirectView (309) - View name 'redirect:', model {}
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-2] DispatcherServlet (1131) - Completed 302 FOUND
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-2] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-4] FilterChainProxy (208) - Securing GET /profile
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-4] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /profile] with attributes [authenticated]
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-4] FilterChainProxy (323) - Secured GET /profile
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-4] DispatcherServlet (91) - GET "/profile", parameters={}
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-4] RequestMappingHandlerMapping (522) - Mapped to com.nico5310.PayMyBuddy.controller.HomepageController#getProfile(User, Model)
+[DEBUG] 2021-06-24 09:55:27.221 [http-nio-8080-exec-4] ContentNegotiatingViewResolver (349) - Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, application/xml;q=0.9, */*;q=0.8]
+[DEBUG] 2021-06-24 09:55:27.236 [http-nio-8080-exec-4] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 09:55:27.236 [http-nio-8080-exec-4] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request
+[DEBUG] 2021-06-24 10:16:47.140 [http-nio-8080-exec-5] FilterChainProxy (208) - Securing GET /
+[DEBUG] 2021-06-24 10:16:47.141 [http-nio-8080-exec-5] SecurityContextPersistenceFilter (102) - Set SecurityContextHolder to empty SecurityContext
+[DEBUG] 2021-06-24 10:16:47.141 [http-nio-8080-exec-5] AnonymousAuthenticationFilter (96) - Set SecurityContextHolder to anonymous SecurityContext
+[DEBUG] 2021-06-24 10:16:47.142 [http-nio-8080-exec-5] FilterSecurityInterceptor (210) - Authorized filter invocation [GET /] with attributes [permitAll]
+[DEBUG] 2021-06-24 10:16:47.143 [http-nio-8080-exec-5] FilterChainProxy (323) - Secured GET /
+[DEBUG] 2021-06-24 10:16:47.144 [http-nio-8080-exec-5] DispatcherServlet (91) - GET "/", parameters={}
+[DEBUG] 2021-06-24 10:16:47.149 [http-nio-8080-exec-5] ContentNegotiatingViewResolver (349) - Selected '*/*' given [*/*]
+[DEBUG] 2021-06-24 10:16:47.154 [http-nio-8080-exec-5] HttpSessionSecurityContextRepository (346) - Did not store anonymous SecurityContext
+[DEBUG] 2021-06-24 10:16:47.155 [http-nio-8080-exec-5] DispatcherServlet (1131) - Completed 200 OK
+[DEBUG] 2021-06-24 10:16:47.156 [http-nio-8080-exec-5] HttpSessionSecurityContextRepository (346) - Did not store anonymous SecurityContext
+[DEBUG] 2021-06-24 10:16:47.156 [http-nio-8080-exec-5] SecurityContextPersistenceFilter (118) - Cleared SecurityContextHolder to complete request

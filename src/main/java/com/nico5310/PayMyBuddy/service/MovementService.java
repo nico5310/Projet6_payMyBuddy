@@ -55,7 +55,6 @@ public class MovementService {
     }
 
 
-
     public void transferToAccountBank(String emailUser, Double amountMovement) {
         log.info("Transfer to Account bank");
         User user = userRepository.findUsersByEmail(emailUser);
