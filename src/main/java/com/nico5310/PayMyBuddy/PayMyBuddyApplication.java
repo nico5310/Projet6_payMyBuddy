@@ -3,6 +3,7 @@ package com.nico5310.PayMyBuddy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class PayMyBuddyApplication {
 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="h-100" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- Meta tags -->
+    <link
+            crossorigin="anonymous"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            rel="stylesheet"
+    >
+    <meta charset="utf-8">
+
+    <title>Pay My Buddy Homepage</title>
+</head>
+
+
+<body class="h-100;">
+<!-- Navigation tab config -->
+<nav class="navbar navbar-dark navbar-expand" style="background-color: #e9ecef">
+    <div class="container">
+        <div class="navbar-brand bg-success" style="padding: 10px; border-radius: 5px">
+            PayMyBuddy
+        </div>
+
+        <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <ul class="navbar-nav">
+
+                <li class="nav-item ">
+                    <a class="nav-link" style="color: black;font-size: larger;"
+                       th:href="@{/homepage}">Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" style="color: black;font-size: larger;"
+                            th:href="@{/transfer}">Transfer
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a  class="nav-link " style="color: black;font-size:
+                    larger;"
+                            th:href="@{/profile}">Profile
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link "  style="color: black;font-size: larger;"
+                            href="mailto:admin@paymybuddy.com">Contact
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a sec.authorize="isAuthenticated()" class="nav-link" style="color: black; font-size: larger;"
+                            th:href="@{/login}">Log off
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container h-100">
+        <!-- Welcome + firstname User-->
+        <h1 class="text-success fw-light" >Welcome
+            <span class="text-secondary fw-light" th:text="${user}"></span>
+        </h1>
+        <!-- Section Balance -->
+        <div class="h-100" style="background-color: #F5F5F5; ">
+            <h2 class="text-success fw-light"> Balance:
+                <span class="text-secondary fw-light" th:text="${balance}"></span>
+                <span class="text-secondary fw-light">€</span>
+            </h2>
+        </div>
+        <br>
+
+
+        <!-- Table of transaction -->
+
+        <hr class="text-white">
+        <div class="row">
+            <h4 class=" text-dark " style="margin-left:25px; margin-bottom: -10px;">My transactions</h4>
+        </div>
+
+
+        <hr class="text-white">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <table class="table table-secondary table-bordered table-striped table-hover text-center">
+                    <thead class="table-success">
+                        <tr>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Sender</th>
+                            <th class="text-center">Recipient</th>
+                            <th class="text-center">Amount</th>
+                            <th class="text-center">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="transaction : ${transactions}">
+                            <td th:text="${transaction.getDate()}"></td>
+                            <td th:text="${transaction.getSenderUser().getFirstName() + ' '+ transaction.getSenderUser().getLastName()}"></td>
+                            <td th:text="${transaction.getRecipientUser().getFirstName() + ' '+ transaction.getRecipientUser().getLastName()}"></td>
+                            <td th:text="${transaction.getAmountTransaction()}+'€'"></td>
+                            <td th:text="${transaction.getDescription()}"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
